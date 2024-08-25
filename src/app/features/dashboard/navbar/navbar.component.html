@@ -1,0 +1,18 @@
+<mat-toolbar class="navbar">
+  <!-- <a mat-button routerLink="/">
+    <img src="../../../assets/ReinharthLOL-logo.webp" alt="Logo" class="logo">
+  </a> -->
+  <h1 class="title" routerLink="/home">ReinharthLOL</h1>
+
+  <nav>
+    <a mat-button routerLink="/home">Inicio</a>
+    <a mat-button routerLink="/champion/details">Campeones</a>
+    <a mat-button routerLink="/about">Hechizos</a>
+    <a mat-button routerLink="/about">Runas</a>
+  </nav>
+
+  <button mat-button class="cta-button" (click)="onGetStartedClick()">
+    About Us!
+  </button>
+</mat-toolbar>
+

@@ -1,0 +1,54 @@
+@import "../../../scss/variables";
+
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: $primary-color;
+  padding: 4% 1%;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+
+  .title {
+    color: $secondary-color;
+    font-family: $title-font;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 3rem;
+    text-shadow: $deeper-text;
+  }
+    a {
+      color: white;
+      text-transform: uppercase;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    a:hover {
+      background: $tertiary-color
+    }
+
+  .cta-button {
+    background: $secondary-color;
+    color: $primary-color;
+    font-weight: bold;
+
+    &:hover {
+      background-color: $tertiary-color;
+    }
+  }
+}
+
+// @media (max-width: 768px) {
+//   .navbar nav {
+//     display: none;
+//   }
+
+//   .navbar .spacer {
+//     display: none;
+//   }
+
+//   .navbar .cta-button {
+//     margin-left: auto;
+//   }
+// }
