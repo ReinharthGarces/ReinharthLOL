@@ -11,7 +11,8 @@ import { Atropos } from 'atropos';
 export class ChampionsDetailsComponent implements OnInit, AfterViewInit {
   public champData: any;
   public champImageUrl: any;
-  public spellsImageUrls: any;
+  public passiveData: any;
+  public spellsData: { name: string; description: string; imageUrl: string }[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -26,7 +27,6 @@ export class ChampionsDetailsComponent implements OnInit, AfterViewInit {
       shadow: false,
       rotate: true,
       rotateTouch: true,
-      // highlight: false,
     });
   }
 
@@ -36,17 +36,24 @@ export class ChampionsDetailsComponent implements OnInit, AfterViewInit {
     this.http.get(url).subscribe({
       next: (data) => {
         this.champData = data;
-
-        // Construye la URL de la imagen usando el nombre del campeón y el número de splash art deseado
         this.champImageUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${this.champData.data.Camille.id}_0.jpg`;
-        const spells = this.champData.data.Camille.spells;
+        let spells = this.champData.data.Camille.spells;
 
-        // Crea una lista de URLs para las imágenes de los hechizos
-        const spellsImageUrls = spells.map((spell: any) => {
-          return `http://ddragon.leagueoflegends.com/cdn/14.14.1/img/spell/${spell.id}.png`;
+              // Extraer datos de la habilidad pasiva
+      this.passiveData = {
+        name: this.champData.data.Camille.passive.name,
+        description: this.champData.data.Camille.passive.description,
+        imageUrl: `http://ddragon.leagueoflegends.com/cdn/14.14.1/img/passive/${this.champData.data.Camille.passive.image.full}`
+      };
+  
+        // Guarda nombres, descripciones y URLs de las imágenes de los hechizos
+        this.spellsData = spells.map((spell: any) => {
+          return {
+            name: spell.name,
+            description: spell.description,
+            imageUrl: `http://ddragon.leagueoflegends.com/cdn/14.14.1/img/spell/${spell.image.full}`
+          };
         });
-        
-        console.log(spellsImageUrls);
       },
       error: (error) => {
         console.error("Error fetching champion data:", error);
