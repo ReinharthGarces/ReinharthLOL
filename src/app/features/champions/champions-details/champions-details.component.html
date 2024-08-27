@@ -1,60 +1,55 @@
-<!-- <div *ngIf="champData" class="atropos-container">
-  <img [src]="champImageUrl" alt="{{ champData.data.Camille.name }} loading screen" class="atropos-item" />
-  
-  <h2>{{ champData.data.Camille.name }}</h2>
-  <p>{{ champData.data.Camille.title }}</p>
-  <p>{{ champData.data.Camille.lore }}</p>
-  <p>{{ champData.data.Camille.tags }}</p>
-  <p>{{ champData.data.Camille.info.difficulty }}</p>
-  
-  <p class="tips">{{ champData.data.Camille.allytips }}</p>
 
-  <h3>Habilidades:</h3>
-  <ul>
-    <li *ngFor="let spell of champData.data.Camille.spells">
-      <strong>{{ spell.name }}</strong>: {{ spell.description }}
-      <div *ngFor="let url of spellsImageUrls">
-        <img [src]="url" alt="Spell Image">
-      </div>
-    </li>
-  </ul>
-</div> -->
 <div class="champion-info-container">
-  <!-- main Atropos container (required), add your custom class here -->
+  <!-- Atropos container -->
   <div class="atropos my-atropos">
-    <!-- scale container (required) -->
     <div class="atropos-scale">
-      <!-- rotate container (required) -->
       <div class="atropos-rotate">
         <h2 class="name">{{ champData.data.Camille.name }}</h2>
-        <!-- inner container (required) --> 
         <div class="atropos-inner">
-          <img class="atropos-image" [src]="champImageUrl" alt="{{ champData.data.Camille.name }} loading screen"/>
+          <img class="atropos-image" [src]="champImageUrl" alt="{{ champData.data.Camille.name }} loading screen" />
         </div>
         <p class="title">{{ champData.data.Camille.title }}</p>
       </div>
     </div>
   </div>
 
-  <mat-card appearance="outlined" class="champion-history">
+  <!-- Champion History -->
+  <mat-card class="champion-history">
     <mat-card-header>
       <mat-card-title class="history-title">Historia</mat-card-title>
     </mat-card-header>
     <mat-card-content>{{ champData.data.Camille.lore }}</mat-card-content>
   </mat-card>
 
+  <!-- Tags -->
+  <mat-card class="tags">
+    <mat-card-content>
+      <p>{{ champData.data.Camille.tags }}</p>
+      <p class="difficulty">{{ champData.data.Camille.info.difficulty }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Tips -->
+  <mat-card class="tips">
+    <mat-card-content>
+      <p>{{ champData.data.Camille.allytips }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Skills -->
   <div class="skills">
-  <div *ngIf="spellsData.length">
-    <h3>Habilidades:</h3>
-    <div *ngIf="passiveData">
-      <div class="card">
-        <img [src]="passiveData.imageUrl" alt="{{ passiveData.name }} Image">
-        <div class="card__content">
-          <p class="card__title">{{ passiveData.name }}</p>
-          <p class="card__description">{{ passiveData.description }}</p>
+    <div class="skills" *ngIf="spellsData.length">
+      <h3>Habilidades:</h3>
+      <div *ngIf="passiveData">
+        <div class="card">
+          <h2>P</h2>
+          <img [src]="passiveData.imageUrl" alt="{{ passiveData.name }} Image">
+          <div class="card__content">
+            <p class="card__title">{{ passiveData.name }}</p>
+            <p class="card__description">{{ passiveData.description }}</p>
+          </div>
         </div>
       </div>
-    </div>
 
       <div *ngFor="let spell of spellsData">
         <div class="card">
@@ -65,6 +60,6 @@
           </div>
         </div>
       </div>
+    </div>
   </div>
-</div>
 </div>

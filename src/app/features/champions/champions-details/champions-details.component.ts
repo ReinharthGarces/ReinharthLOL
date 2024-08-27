@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Atropos } from 'atropos';
-
-
 @Component({
   selector: 'app-champions-details',
   templateUrl: './champions-details.component.html',
@@ -13,7 +11,6 @@ export class ChampionsDetailsComponent implements OnInit, AfterViewInit {
   public champImageUrl: any;
   public passiveData: any;
   public spellsData: { name: string; description: string; imageUrl: string }[] = [];
-
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
