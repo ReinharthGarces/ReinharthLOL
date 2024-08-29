@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChampionsDetailsComponent } from './features/champions/champions-details/champions-details.component';
 
 const routes: Routes = [{
-    path: 'champion',
+    path: 'champions',
     loadChildren: () => import('./features/champions/champions.module').then(m => m.ChampionsModule)
   },
   {
