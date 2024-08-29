@@ -1,48 +1,47 @@
-<!-- Champion-Details -->
 <div class="champion-info-container">
-  <div class="left-side">
-    <div class="atropos my-atropos">
-      <!-- scale container (required) -->
-      <div class="atropos-scale">
-        <!-- rotate container (required) -->
-        <div class="atropos-rotate">
-          <h2 class="name">{{ champData.data.Camille.name }}</h2>
-          <!-- inner container (required) --> 
-          <div class="atropos-inner">
-            <img class="atropos-image" [src]="champImageUrl" alt="{{ champData.data.Camille.name }} loading screen"/>
-          </div>
-          <p class="title">{{ champData.data.Camille.title }}</p>
+  <!-- Atropos container -->
+  <div class="atropos my-atropos">
+    <div class="atropos-scale">
+      <div class="atropos-rotate">
+        <h2 class="name">{{ champData.data.Camille.name }}</h2>
+        <div class="atropos-inner">
+          <img class="atropos-image" [src]="champImageUrl" alt="{{ champData.data.Camille.name }} loading screen" />
         </div>
+        <p class="title">{{ champData.data.Camille.title }}</p>
       </div>
-    </div>
-
-    <div class="tags">
-      <p>{{ champData.data.Camille.tags }}</p>
-      <p>{{ champData.data.Camille.info.difficulty }}</p>
     </div>
   </div>
 
-<!-- 
-  <div class="right-side">
-    <mat-card class="champion-history" appearance="outlined">
-      <mat-card-header>
-        <mat-card-title class="history-title"> Su Historia</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>{{ champData.data.Camille.lore }}</mat-card-content>
-    </mat-card>
+  <!-- Champion History -->
+  <mat-card class="champion-history">
+    <mat-card-header>
+      <mat-card-title class="history-title">Historia</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>{{ champData.data.Camille.lore }}</mat-card-content>
+  </mat-card>
 
-    <mat-card class="tips">
-      <mat-card-title>Consejo Importante:</mat-card-title>
-      <mat-card-content>{{ champData.data.Camille.allytips }}</mat-card-content>
-    </mat-card>
+  <!-- Tags -->
+  <mat-card class="tags">
+    <mat-card-content>
+      <p>{{ champData.data.Camille.tags }}</p>
+      <p class="difficulty">{{ champData.data.Camille.info.difficulty }}</p>
+    </mat-card-content>
+  </mat-card>
 
-    <mat-card class="skills-title">
-      <mat-card-title>Habilidades:</mat-card-title>
-    </mat-card>
+  <!-- Tips -->
+  <mat-card class="tips">
+    <mat-card-content>
+      <p>{{ champData.data.Camille.allytips }}</p>
+    </mat-card-content>
+  </mat-card>
 
-    <mat-card class="skills" *ngIf="spellsData.length">
+  <!-- Skills -->
+  <div class="skills">
+    <div class="skills" *ngIf="spellsData.length">
+      <h3>Habilidades:</h3>
       <div *ngIf="passiveData">
         <div class="card">
+          <h2>P</h2>
           <img [src]="passiveData.imageUrl" alt="{{ passiveData.name }} Image">
           <div class="card__content">
             <p class="card__title">{{ passiveData.name }}</p>
@@ -51,15 +50,15 @@
         </div>
       </div>
 
-        <div class="skills" *ngFor="let spell of spellsData">
-          <div class="card">
-            <img [src]="spell.imageUrl" alt="{{ spell.name }} Image">
-            <div class="card__content">
-              <p class="card__title">{{ spell.name }}</p>
-              <p class="card__description">{{ spell.description }}.</p>
-            </div>
+      <div *ngFor="let spell of spellsData">
+        <div class="card">
+          <img [src]="spell.imageUrl" alt="{{ spell.name }} Image">
+          <div class="card__content">
+            <p class="card__title">{{ spell.name }}</p>
+            <p class="card__description">{{ spell.description }}.</p>
           </div>
         </div>
-    </mat-card>
-  </div> -->
+      </div>
+    </div>
+  </div>
 </div>
