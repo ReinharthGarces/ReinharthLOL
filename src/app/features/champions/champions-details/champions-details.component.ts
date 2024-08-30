@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Atropos } from 'atropos';
 import { ChampionsService } from '../../../core/champions.service';
+import { environment } from '../../../../environments/environmet.development';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-champions-details',
   templateUrl: './champions-details.component.html',
@@ -9,13 +10,22 @@ import { ChampionsService } from '../../../core/champions.service';
 })
 export class ChampionsDetailsComponent implements OnInit, AfterViewInit {
   public champData: any;
+  public champName!: string;
   public champImageUrl: any;
   public passiveData: any;
   public spellsData: { name: string; description: string; imageUrl: string }[] = [];
-  constructor(private http: HttpClient, private championsService: ChampionsService) {}
+  private imgURL = environment.imgURL
+  private champImgURL = environment.champImgURL
+
+  constructor(private championsService: ChampionsService, private route: ActivatedRoute,) {}
 
   ngOnInit() {
-    this.getChampionData();
+    this.route.paramMap.subscribe(params => {
+      const championName = params.get('name');
+      if (championName) {
+        this.getChampionData(championName);
+      }
+    });
   }
 
   ngAfterViewInit() {
@@ -28,28 +38,26 @@ export class ChampionsDetailsComponent implements OnInit, AfterViewInit {
     });
   }
 
-  getChampionData() {
-    const url = 'https://ddragon.leagueoflegends.com/cdn/14.14.1/data/es_ES/champion/Camille.json';
-    
-    this.http.get(url).subscribe({
+  getChampionData(championName: string) {
+    this.championsService.getChampionByName(championName).subscribe({
       next: (data) => {
         this.champData = data;
-        this.champImageUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${this.champData.data.Camille.id}_0.jpg`;
-        let spells = this.champData.data.Camille.spells;
+        this.champName = championName
+        this.champImageUrl = `${this.champImgURL}/${this.champData.data[championName].id}_0.jpg`;
 
-              // Extraer datos de la habilidad pasiva
-      this.passiveData = {
-        name: this.champData.data.Camille.passive.name,
-        description: this.champData.data.Camille.passive.description,
-        imageUrl: `http://ddragon.leagueoflegends.com/cdn/14.14.1/img/passive/${this.champData.data.Camille.passive.image.full}`
-      };
-  
+        // Extraer datos de la habilidad pasiva
+        this.passiveData = {
+          name: this.champData.data[championName].passive.name,
+          description: this.champData.data[championName].passive.description,
+          imageUrl: `${this.imgURL}/passive/${this.champData.data[championName].passive.image.full}`
+        };
+
         // Guarda nombres, descripciones y URLs de las imágenes de los hechizos
-        this.spellsData = spells.map((spell: any) => {
+        this.spellsData = this.champData.data[championName].spells.map((spell: any) => {
           return {
             name: spell.name,
             description: spell.description,
-            imageUrl: `http://ddragon.leagueoflegends.com/cdn/14.14.1/img/spell/${spell.image.full}`
+            imageUrl: `${this.imgURL}/spell/${spell.image.full}`
           };
         });
       },

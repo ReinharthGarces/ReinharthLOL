@@ -9,7 +9,7 @@ const routes: Routes = [
     component: ChampionsComponent
   },
   {
-    path: 'details',
+    path: 'details/:name',
     component: ChampionsDetailsComponent
   }
 ];
