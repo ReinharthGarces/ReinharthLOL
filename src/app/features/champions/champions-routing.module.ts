@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChampionsDetailsComponent } from './champions-details/champions-details.component';
+import { ChampionsComponent } from './champions/champions.component';
 
 const routes: Routes = [
   {
-    path: 'details',
+    path: '',
+    component: ChampionsComponent
+  },
+  {
+    path: 'details/:name',
     component: ChampionsDetailsComponent
   }
 ];

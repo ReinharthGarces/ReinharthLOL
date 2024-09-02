@@ -1,0 +1,79 @@
+@import "../../../scss/variables";
+
+.body {
+  background-image: url('../../../assets/summoner-rift3.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+}
+
+.champions-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+mat-grid-list {
+  width: 90%;
+  max-width: 1400px;
+  margin: 5% auto 0 auto;
+}
+
+mat-grid-tile {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+}
+
+mat-grid-tile:hover {
+  transform: scale(1.05);
+}
+
+.champion-card {
+  background-color: $primary-color;
+  width: 80%;
+  height: 100%;
+  box-shadow: $deeper-card;
+}
+
+mat-card-header {
+  background-color: #1976d2;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 12px;
+
+  mat-card-subtitle{
+    font-size: small;
+  }
+}
+
+mat-card img {
+  height: 75%;
+}
+
+mat-card-footer {
+  margin-top: 4%;
+  align-self: center;
+}
+
+mat-card-footer button {
+  color: #fff;
+}
+
+mat-card-footer button:hover {
+  background-color: $tertiary-color;
+}
+
+mat-paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  height: 5%;
+}
+

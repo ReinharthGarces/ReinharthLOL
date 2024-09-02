@@ -18,6 +18,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { TranslateTagPipe } from './pipes/translate-tag.pipe';
+import { AppTitleSizeDirective } from './directives/title-style.directive';
 
 
 const materialComponents = [
@@ -44,7 +46,15 @@ const materialComponents = [
 
 @NgModule({
   imports: [ materialComponents ],
-  exports: [ materialComponents ]
+  exports: [ 
+    materialComponents,
+    TranslateTagPipe,
+    AppTitleSizeDirective
+  ],
+  declarations: [
+    TranslateTagPipe,
+    AppTitleSizeDirective
+  ]
 })
 
 export class SharedModule { }

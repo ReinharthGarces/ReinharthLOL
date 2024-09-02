@@ -14,14 +14,14 @@
     font-family: $title-font;
     font-weight: 800;
     font-style: normal;
-    font-size: 3.5rem;
+    font-size: 3rem;
     text-shadow: $deeper-text;
   }
     a {
       color: white;
       text-transform: uppercase;
       font-weight: bold;
-      padding: 10px;
+      gap: 10px;
     }
 
     a:hover {

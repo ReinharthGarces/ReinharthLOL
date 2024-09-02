@@ -151,15 +151,28 @@
 
 // }
 
+///2
+
+.body {
+  background-image: url('../../../assets/summoner-rift3.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 120%; 
+}
+
 .champion-info-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Dos columnas de igual ancho */
-  grid-template-rows: auto; /* Tres filas de altura automática */
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
   grid-template-areas:
     "atropos champion-history"
     "tags tips"
-    "skills skills"; /* Las habilidades ocupan toda la fila al final */
-  gap: 2px; /* Espaciado entre los elementos */
+    "skills skills";
+  gap: 2px;
   margin: 3%;
 }
 
@@ -200,7 +213,6 @@
     }
   }
 }
-
 .champion-history {
   grid-area: champion-history;
   background-color: $primary-color;
@@ -209,12 +221,8 @@
 
   .history-title {
     text-align: center;
-    font-family: $title-font;
     font-weight: 600;
     font-size: 2rem;
-    text-shadow: $deeper-text;
-    color: $secondary-color;
-    padding-bottom: 10px;
   }
 }
 
@@ -222,14 +230,19 @@
   grid-area: tags;
   justify-content: center;
   align-items: center;
+  background-color: $primary-color;
 
   .difficulty{
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 .tips {
   grid-area: tips;
+  background-color: $primary-color;
 }
 
 .skills {
@@ -295,3 +308,14 @@
   color: $primary-color;
   font-size: small;
 }
+
+//Spinner
+// .spinner-container {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 3%;
+//   justify-content: center;
+//   align-items: center;
+//   height: 30vh;
+//   margin: 20vh;
+// }

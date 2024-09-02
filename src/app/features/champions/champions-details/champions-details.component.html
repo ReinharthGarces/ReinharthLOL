@@ -1,44 +1,58 @@
-<div class="champion-info-container">
+<!-- @if ( isLoading ) {
+  <div class="spinner-container">
+    <mat-spinner></mat-spinner>
+    <h4>Cargando Informacion...</h4>
+  </div>
+} 
+
+@else { -->
+<section class="body">
+  <div class="champion-info-container">
   <!-- Atropos container -->
   <div class="atropos my-atropos">
+    <h2 class="name">{{ champData.data[champName].name }}</h2>
     <div class="atropos-scale">
       <div class="atropos-rotate">
-        <h2 class="name">{{ champData.data.Camille.name }}</h2>
         <div class="atropos-inner">
-          <img class="atropos-image" [src]="champImageUrl" alt="{{ champData.data.Camille.name }} loading screen" />
+          <img class="atropos-image" [src]="champImageUrl" alt="{{ champData.data[champName].name }} loading screen" />
         </div>
-        <p class="title">{{ champData.data.Camille.title }}</p>
+        <p class="title">{{ champData.data[champName].title }}</p>
       </div>
     </div>
   </div>
 
-  <!-- Champion History -->
-  <mat-card class="champion-history">
-    <mat-card-header>
-      <mat-card-title class="history-title">Historia</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>{{ champData.data.Camille.lore }}</mat-card-content>
-  </mat-card>
+    <!-- Champion History -->
+    <mat-card class="champion-history">
+      <mat-card-header>
+        <mat-card-title class="history-title" appTitleStyle>Historia</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>{{ champData.data[champName].lore }}</mat-card-content>
+    </mat-card>
 
-  <!-- Tags -->
-  <mat-card class="tags">
-    <mat-card-content>
-      <p>{{ champData.data.Camille.tags }}</p>
-      <p class="difficulty">{{ champData.data.Camille.info.difficulty }}</p>
-    </mat-card-content>
-  </mat-card>
+    <!-- Tags -->
+    <mat-card class="tags">
+      <mat-card-content>
+        <span *ngFor="let tag of champData.data[champName].tags; let i = index">
+          {{ tag | translateTag }}<span *ngIf="i < champData.data[champName].tags.length - 1">, </span>
+        </span>
+        <div class="difficulty">
+          <span>{{ champData.data[champName].info.difficulty }}</span>
+          <img src="/star.png" width="25" height="25"/>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-  <!-- Tips -->
-  <mat-card class="tips">
-    <mat-card-content>
-      <p>{{ champData.data.Camille.allytips }}</p>
-    </mat-card-content>
-  </mat-card>
+    <!-- Tips -->
+    <mat-card class="tips">
+      <mat-card-content>
+        <h3 appTitleStyle>Consejo</h3>
+        <p>{{ champData.data[champName].allytips }}</p>
+      </mat-card-content>
+    </mat-card>
 
-  <!-- Skills -->
-  <div class="skills">
+    <!-- Skills -->
     <div class="skills" *ngIf="spellsData.length">
-      <h3>Habilidades:</h3>
+      <h3 appTitleStyle>Habilidades:</h3>
       <div *ngIf="passiveData">
         <div class="card">
           <h2>P</h2>
@@ -61,4 +75,5 @@
       </div>
     </div>
   </div>
-</div>
+</section>
+
