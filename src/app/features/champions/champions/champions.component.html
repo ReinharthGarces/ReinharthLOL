@@ -1,10 +1,10 @@
 <section class="body">
   <div class="champions-container">
-    <mat-grid-list [cols]="cols" gutterSize="25px" rowHeight="1:1.8">
+    <mat-grid-list [cols]="cols" gutterSize="30px" rowHeight="1:1.7">
       <mat-grid-tile *ngFor="let champion of displayedChampions">
         <mat-card class="champion-card">
           <mat-card-header>
-            <mat-card-title>{{ champion.name }}</mat-card-title>
+            <mat-card-title appTitleStyle>{{ champion.name }}</mat-card-title>
             <mat-card-subtitle>{{ champion.title}}</mat-card-subtitle>
           </mat-card-header>
           <img mat-card-image [src]="champion.imageUrl" alt="{{ champion.name }}">

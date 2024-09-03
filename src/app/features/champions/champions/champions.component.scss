@@ -40,15 +40,15 @@ mat-grid-tile:hover {
 }
 
 mat-card-header {
-  background-color: #1976d2;
+  background-color: $tertiary-color;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #fff;
   padding: 12px;
+  border-radius: 10px 10px 0 0;
 
   mat-card-subtitle{
-    font-size: small;
+    font-size: smaller;
   }
 }
 

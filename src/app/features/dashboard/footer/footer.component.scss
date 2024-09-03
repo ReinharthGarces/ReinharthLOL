@@ -4,10 +4,14 @@
   display: flex;
   align-items: center;
   position: relative;
-  justify-content: flex-end;
-  background-color: $primary-color;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, rgb(18, 18, 18), $primary-color);
   padding: 20px;
   height: 10vh;
+  
+  .footer-info{
+    color: #fff;
+  }
 
   ul {
     display: flex;

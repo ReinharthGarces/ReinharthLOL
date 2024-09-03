@@ -5,9 +5,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: $primary-color;
+  background: linear-gradient(to top, rgb(18, 18, 18), $primary-color);
   padding: 4% 1%;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
   
   .title {
     color: $secondary-color;
