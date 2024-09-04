@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: linear-gradient(to top, rgb(18, 18, 18), $primary-color);
+  background: $first-gradient;
   padding: 4% 1%;
   
   .title {

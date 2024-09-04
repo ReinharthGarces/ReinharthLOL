@@ -14,8 +14,7 @@ export class ChampionsDetailsComponent implements OnInit, AfterViewInit {
   public champName!: string;
   public champImageUrl: any;
   public passiveData: any;
-  public spellsData: { name: string; description: string; imageUrl: string }[] = [];
-  private imgURL = environment.imgURL
+  public spellsData: { name: string; letter: string; description: string; imageUrl: string }[] = [];
   private champImgURL = environment.champImgURL
 
   constructor(private championsService: ChampionsService, private route: ActivatedRoute,) {}
@@ -30,7 +29,7 @@ export class ChampionsDetailsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const myAtropos = Atropos({
+    Atropos({
       el: '.my-atropos',
       activeOffset: 50,
       shadow: false,
@@ -44,28 +43,19 @@ export class ChampionsDetailsComponent implements OnInit, AfterViewInit {
     this.championsService.getChampionByName(championName).subscribe({
       next: (data) => {
         this.champData = data;
-        this.champName = championName
+        this.champName = championName;
         this.champImageUrl = `${this.champImgURL}/${this.champData.data[championName].id}_0.jpg`;
 
-        // Extraer datos de la habilidad pasiva
-        this.passiveData = {
-          name: this.champData.data[championName].passive.name,
-          description: this.champData.data[championName].passive.description,
-          imageUrl: `${this.imgURL}/passive/${this.champData.data[championName].passive.image.full}`
-        };
+        // Usa el servicio para extraer datos de la habilidad pasiva
+        this.passiveData = this.championsService.extractPassiveData(this.champData.data[championName]);
 
-        // Guarda nombres, descripciones y URLs de las imágenes de los hechizos
-        this.spellsData = this.champData.data[championName].spells.map((spell: any) => {
-          return {
-            name: spell.name,
-            description: spell.description,
-            imageUrl: `${this.imgURL}/spell/${spell.image.full}`
-          };
-        });
+        // Usa el servicio para extraer datos de los hechizos
+        this.spellsData = this.championsService.extractSpellsData(this.champData.data[championName]);
         this.isLoading = false;
       },
       error: (error) => {
         console.error("Error fetching champion data:", error);
+        this.isLoading = false;
       }
     });
   }

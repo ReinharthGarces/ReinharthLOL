@@ -8,6 +8,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 })
 export class ChampionsService {
   private apiURL = environment.apiURL
+  private imgURL = environment.imgURL;
   constructor(private http: HttpClient) {}
 
   private handleError(error: HttpErrorResponse): Observable<never> {
@@ -16,16 +17,39 @@ export class ChampionsService {
   }
 
   getAllChampions(): Observable<any> {
-    const url = `${this.apiURL}.json`;
-    return this.http.get(url).pipe(
+    const URL = `${this.apiURL}.json`;
+    return this.http.get(URL).pipe(
       catchError(this.handleError)
     );
   }
 
   getChampionByName(name: string): Observable<any> {
-    const url = `${this.apiURL}/${name}.json`;
-    return this.http.get(url).pipe(
+    const URL = `${this.apiURL}/${name}.json`;
+    return this.http.get(URL).pipe(
       catchError(this.handleError)
     );
+  }
+
+  // Nuevo método para extraer datos de la habilidad pasiva
+  extractPassiveData(champData: any) {
+    const passive = champData.passive;
+    return {
+      name: passive.name,
+      description: passive.description,
+      imageUrl: `${this.imgURL}/passive/${passive.image.full}`
+    };
+  }
+
+  // Nuevo método para extraer datos de los hechizos
+  extractSpellsData(champData: any) {
+    const spellLetters = ['Q', 'W', 'E', 'R'];
+    return champData.spells.map((spell: any, index: number) => {
+      return {
+        name: spell.name,
+        letter: spellLetters[index], 
+        description: spell.description,
+        imageUrl: `${this.imgURL}/spell/${spell.image.full}`
+      };
+    });
   }
 }

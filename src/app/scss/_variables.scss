@@ -2,6 +2,7 @@
 $primary-color: #19485f;
 $secondary-color: #D9E0A4;
 $tertiary-color: #00a896;
+$quaternary-color: #ffa726;
 
 //Fonts
 $title-font: "Kaushan Script", cursive;
@@ -17,3 +18,7 @@ $deeper-card:
   2px 2px 4px rgba(0, 0, 0, 0.15),
   3px 3px 6px rgba(0, 0, 0, 0.1),
   4px 4px 8px rgba(0, 0, 0, 0.05);
+
+//Gradients
+$first-gradient: linear-gradient(to top, rgb(18, 18, 18), $primary-color);
+$secondary-gradient: linear-gradient(to bottom, rgb(18, 18, 18), $primary-color);;
