@@ -1,0 +1,36 @@
+.items-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  mat-grid-list {
+    width: 100%;
+  }
+
+  .item-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    img {
+      max-height: 100px;
+      object-fit: contain;
+    }
+
+    mat-card-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    mat-card-content {
+      font-size: 0.9rem;
+    }
+  }
+}
