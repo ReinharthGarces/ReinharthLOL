@@ -1,12 +1,14 @@
-<div class="runes-grid">
-  <mat-card *ngFor="let rune of runes" class="rune-card">
-    <mat-card-header>
-      <mat-card-title>{{ rune.name }}</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image [src]="'https://ddragon.leagueoflegends.com/cdn/img/' + rune.icon" alt="{{ rune.name }}">
-    <mat-card-content>
-      <p>{{ rune.shortDesc }}</p>
-    </mat-card-content>
-  </mat-card>
-</div>
+<section class="body">
+  <div class="runes-grid">
+    <mat-card *ngFor="let rune of runes" class="rune-card">
+      <mat-card-header>
+        <mat-card-title appTitleStyle class="title">{{ rune.name }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="'/runes/' + rune.name + '.png'" alt="{{ rune.name }}">
+      <mat-card-content>
+        <p>{{ rune.shortDesc }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
 
