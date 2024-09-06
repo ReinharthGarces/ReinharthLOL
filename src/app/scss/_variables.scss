@@ -21,4 +21,8 @@ $deeper-card:
 
 //Gradients
 $first-gradient: linear-gradient(to top, rgb(18, 18, 18), $primary-color);
-$secondary-gradient: linear-gradient(to bottom, rgb(18, 18, 18), $primary-color);;
+$second-gradient: linear-gradient(to bottom, rgb(18, 18, 18), $primary-color);
+$third-gradient: linear-gradient(to top, rgb(18, 18, 18), $tertiary-color);
+$fourth-gradient: linear-gradient(to bottom, rgb(18, 18, 18), $tertiary-color);
+
+
