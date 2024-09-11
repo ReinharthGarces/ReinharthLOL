@@ -28,6 +28,12 @@ export class ChampionsComponent implements OnInit{
 
   ngOnInit(): void {
     this.setCols(window.innerWidth);
+
+    const storedPageIndex = localStorage.getItem('pageIndex');
+    if (storedPageIndex) {
+      this.pageIndex = parseInt(storedPageIndex, 10);
+    }
+
     this.championsService.getAllChampions().subscribe(data => {
       this.champions = Object.values(data.data);
       this.champions.forEach(champion => {
@@ -45,9 +51,11 @@ export class ChampionsComponent implements OnInit{
   }
 
   handlePageEvent(event: PageEvent): void {
-    this.pageIndex = event.pageIndex;
-    this.pageSize = event.pageSize;
-    this.updateDisplayedChampions();
+  this.pageIndex = event.pageIndex;
+  this.pageSize = event.pageSize;
+  localStorage.removeItem('pageIndex'); 
+  localStorage.setItem('pageIndex', this.pageIndex.toString());
+  this.updateDisplayedChampions();
   }
 
   //Setea las columnas que se mostraran en las vistas

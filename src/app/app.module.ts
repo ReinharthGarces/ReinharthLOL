@@ -7,6 +7,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './features/dashboard/dashboard.module';
 import { ChampionsModule } from './features/champions/champions.module';
+import { SpellsModule } from './features/spells/spells.module';
+import { RunesModule } from './features/runes/runes.module';
+import { ItemsModule } from './features/items/items.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { ChampionsModule } from './features/champions/champions.module';
     SharedModule,
     DashboardModule,
     ChampionsModule,
+    SpellsModule,
+    RunesModule,
+    ItemsModule,
     AppRoutingModule
   ],
   providers: [

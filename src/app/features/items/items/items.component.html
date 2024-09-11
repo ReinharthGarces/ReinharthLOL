@@ -1,0 +1,14 @@
+<div class="items-container">
+  <mat-grid-list cols="4" rowHeight="200px" gutterSize="10px">
+    <mat-grid-tile *ngFor="let item of items">
+      <mat-card class="item-card">
+        <img mat-card-image [src]="'http://ddragon.leagueoflegends.com/cdn/14.17.1/img/item/' + item.image.full" alt="{{item.name}}">
+        <mat-card-title>{{ item.name }}</mat-card-title>
+        <mat-card-content>
+          <p>{{ item.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+

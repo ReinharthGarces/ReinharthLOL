@@ -1,8 +1,8 @@
 //Colors
 $primary-color: #19485f;
-$secondary-color: #D9E0A4;
+$secondary-color: #87C840;
 $tertiary-color: #00a896;
-$quaternary-color: #ffa726;
+$quaternary-color: #E76919;
 
 //Fonts
 $title-font: "Kaushan Script", cursive;
@@ -20,9 +20,9 @@ $deeper-card:
   4px 4px 8px rgba(0, 0, 0, 0.05);
 
 //Gradients
-$first-gradient: linear-gradient(to top, rgb(18, 18, 18), $primary-color);
-$second-gradient: linear-gradient(to bottom, rgb(18, 18, 18), $primary-color);
-$third-gradient: linear-gradient(to top, rgb(18, 18, 18), $tertiary-color);
-$fourth-gradient: linear-gradient(to bottom, rgb(18, 18, 18), $tertiary-color);
+$first-gradient: linear-gradient(to top, rgb(18, 18, 18, 0.92), $primary-color);
+$second-gradient: linear-gradient(to bottom, rgb(18, 18, 18, 0.92), $primary-color);
+$third-gradient: linear-gradient(to top, rgb(18, 18, 18, 0.92), $tertiary-color);
+$fourth-gradient: linear-gradient(to bottom, rgb(18, 18, 18, 0.92), $tertiary-color);
 
 

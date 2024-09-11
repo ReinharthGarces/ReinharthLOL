@@ -1,0 +1,12 @@
+<div class="spells-grid">
+  <mat-card *ngFor="let spell of spells" class="spell-card">
+    <mat-card-header>
+      <mat-card-title>{{ spell.name }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="'https://ddragon.leagueoflegends.com/cdn/14.17.1/img/spell/' + spell.image.full" alt="{{ spell.name }}">
+    <mat-card-content>
+      <p>{{ spell.description }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+

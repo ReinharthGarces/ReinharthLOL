@@ -1,12 +1,14 @@
-<!-- @if ( isLoading ) {
+@if ( isLoading ) {
   <div class="spinner-container">
-    <mat-spinner></mat-spinner>
-    <h4>Cargando Informacion...</h4>
+    <mat-spinner class="spinner"></mat-spinner>
+    <h2 appTitleStyle>Cargando Informacion...</h2>
   </div>
 } 
 
-@else { -->
-<section class="body">
+@else {
+<section class="main">
+  <div class="main-overlay"></div>
+  <h1 class="main-title">Detalles del Campeón</h1>
   <div class="champion-info-container">
   <!-- Atropos container -->
   <div class="atropos my-atropos">
@@ -14,17 +16,17 @@
     <div class="atropos-scale">
       <div class="atropos-rotate">
         <div class="atropos-inner">
-          <img class="atropos-image" [src]="champImageUrl" alt="{{ champData.data[champName].name }} loading screen" />
+          <img class="atropos-image" [src]="champImageUrl" alt="{{ champData.data[champName].name }} loading screen"/>
         </div>
         <p class="title">{{ champData.data[champName].title }}</p>
       </div>
     </div>
   </div>
-
+  
     <!-- Champion History -->
     <mat-card class="champion-history">
       <mat-card-header>
-        <mat-card-title class="history-title" appTitleStyle>Historia</mat-card-title>
+        <h2 class="history-title" appTitleStyle>Historia</h2>
       </mat-card-header>
       <mat-card-content>{{ champData.data[champName].lore }}</mat-card-content>
     </mat-card>
@@ -32,6 +34,7 @@
     <!-- Tags -->
     <mat-card class="tags">
       <mat-card-content>
+        <h5 class="tags-title" appTitleStyle>Maestría</h5>
         <span *ngFor="let tag of champData.data[champName].tags; let i = index">
           {{ tag | translateTag }}<span *ngIf="i < champData.data[champName].tags.length - 1">, </span>
         </span>
@@ -45,7 +48,7 @@
     <!-- Tips -->
     <mat-card class="tips">
       <mat-card-content>
-        <h3 appTitleStyle>Consejo</h3>
+        <h2 appTitleStyle>Consejo</h2>
         <p>{{ champData.data[champName].allytips }}</p>
       </mat-card-content>
     </mat-card>
@@ -53,14 +56,14 @@
     <!-- Skills -->
     <div class="skills" *ngIf="spellsData.length">
       <div class="skills-title">
-        <h3 appTitleStyle>Habilidades:</h3>
+        <h2 appTitleStyle>Habilidades:</h2>
       </div>
       <div *ngIf="passiveData">
         <div class="card">
           <h2 appTitleStyle>P</h2>
           <img [src]="passiveData.imageUrl" alt="{{ passiveData.name }} Image">
           <div class="card__content">
-            <p class="card__title">{{ passiveData.name }}</p>
+            <p class="card__title" appTitleStyle>{{ passiveData.name }}</p>
             <p class="card__description">{{ passiveData.description }}</p>
           </div>
         </div>
@@ -71,7 +74,7 @@
           <h2 appTitleStyle>{{spell.letter}}</h2>
           <img [src]="spell.imageUrl" alt="{{ spell.name }} Image">
           <div class="card__content">
-            <p class="card__title">{{ spell.name }}</p>
+            <p class="card__title" appTitleStyle>{{ spell.name }}</p>
             <p class="card__description">{{ spell.description }}.</p>
           </div>
         </div>
@@ -79,4 +82,4 @@
     </div>
   </div>
 </section>
-
+}
