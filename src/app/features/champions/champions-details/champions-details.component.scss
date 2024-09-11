@@ -8,8 +8,28 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
+  z-index: 1;
   width: 100%;
-  height: 150%; 
+  height: 150%;
+
+  .main-overlay {
+    position: absolute;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5));
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+  }
+
+  .main-title{
+    text-align: center;
+    margin-top: 4%;
+    color: $septenary-color;
+    font-family: $title-font;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 3.5rem;
+    text-shadow: $bento-card;
+  }
 }
 
 // Grid container
@@ -22,6 +42,7 @@
   height: 100vh;
 }
 
+//Champion-Image
 .my-atropos {
   grid-column: span 2 / span 2;
   grid-row: span 5 / span 5;
@@ -30,7 +51,7 @@
 
   .name {
     text-align: center;
-    color: $secondary-color;
+    color: $senary-color;
     font-family: $title-font;
     font-weight: 800;
     font-size: 3.5rem;
@@ -43,13 +64,13 @@
     font-weight: 600;
     font-size: 2rem;
     text-shadow: $deeper-text;
-    color: $secondary-color;
+    color: $senary-color;
     padding-top: 5px;
   }
 
   .atropos-inner {
-    width: 15vw;
-    height: 50vh;
+    width: 18vw;
+    height: 65vh;
     margin: 0 auto;
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -60,39 +81,62 @@
     }
   }
 }
+
+//History
 .champion-history {
   grid-column: span 2 / span 2;
   grid-row: span 3 / span 3;
   background-color: $primary-color;
-  box-shadow: $deeper-card;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-align: center;
+  color: $quinary-color;
+  padding-inline: 10px;
+  transition: $basic-transition;
 
-  .history-title {
-    font-weight: 600;
-    font-size: 2rem;
-    margin-bottom: 4vh;
+  h2{
+    text-shadow: $deeper-text;
+  }
+  &:hover {
+    box-shadow: $bento-card;
+    transform: $basic-transform;
   }
 }
 
+//Tags
 .tags {
   grid-column: span 2 / span 2;
   grid-column-start: 3;
   grid-row-start: 6;
   justify-content: center;
   align-items: center;
-  background-color: $primary-color;
+  background-color: $tertiary-color;
   box-shadow: $deeper-card;
   font-size: larger;
   font-weight: 400;
   text-align: center;
+  color: $quinary-color;
+  transition: $basic-transition;
+
+  &:hover {
+    box-shadow: $bento-card;
+    transform: $basic-transform;
+  }
 
   .difficulty {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    h5 {
+      text-shadow: $deeper-text;
+    }
   }
 }
 
+//Tips
 .tips {
   grid-column: span 2 / span 2;
   grid-row: span 3 / span 3;
@@ -101,46 +145,81 @@
   background-color: $quaternary-color;
   box-shadow: $deeper-card;
   text-align: center;
-}
-
-.skills {
-  grid-area: skills;
-  display: flex;
+  align-items: center;
+  color: $quinary-color;
   justify-content: center;
-  gap: 20px; /* Espaciado entre las habilidades */
+  padding-inline: 10px;
+  transition: $basic-transition;
+
+  h2{
+    text-shadow: $deeper-text;
+  }
+
+  &:hover {
+    box-shadow: $bento-card;
+    transform: $basic-transform;
+  }
 }
 
-.skills-title{
-  align-self: center;
-  margin: 5px;
+
+//Skills
+.skills {
+  grid-column: span 2 / span 2;
+  grid-row: span 6 / span 6;
+  grid-column-start: 5;
+  grid-row-start: 1;
+  background-color: $secondary-color;
+  box-shadow: $deeper-card;
+  border-radius: 15px;
+  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr));
+  grid-gap: 10px; 
+  padding: 10px;
+  transition: $basic-transition;
+
+  &:hover {
+    box-shadow: $bento-card;
+    transform: $basic-transform;
+  }
+
+  .skills-title{
+    grid-column: span 2;
+    text-align: center;
+    align-content: center;
+    text-shadow: $deeper-text;
+  }
 }
 
+//Skills-cards
 .card {
-  position: relative;
-  width: 15vw;
-  height: 30vh;
-  background:$secondary-gradient;
-  border-radius: 10px;
   display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background:$second-gradient;
+  border-radius: 10px;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   perspective: 1000px;
-  box-shadow: 0 0 0 5px #ffffff80;
+  box-shadow: 0 0 0 2px $quinary-color;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   h2 {
     align-self: flex-start;
+    color: $septenary-color !important;
+    text-shadow: $deeper-text;
   }
 
-.card img {
-  width: 75%;
-  height: 75%;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  margin: 5px;
-  border-radius: 15px;
-  box-shadow: $deeper-card;
-}
+  img {
+    width: 70%;
+    height: 70%;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin: 5px;
+    border-radius: 15px;
+    box-shadow: $deeper-card;
+  }
 
   &:hover {
     transform: scale(1.05);
@@ -160,7 +239,7 @@
   text-align: justify;
   line-height: 1.4;
   overflow: auto;
-  background-color: $primary-color;
+  background-color: $tertiary-color;
   transform: rotateX(-90deg);
   transform-origin: bottom;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -190,7 +269,7 @@
   padding: 5px;
   font-size: x-large;
   font-family: $title-font;
-  color: $quaternary-color;
+  color: $septenary-color;
   text-shadow: $deeper-text;
 }
 
@@ -199,13 +278,14 @@
   font-size: smaller;
 }
 
-//Spinner
-// .spinner-container {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 3%;
-//   justify-content: center;
-//   align-items: center;
-//   height: 30vh;
-//   margin: 20vh;
-// }
+
+// Spinner
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4%;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  margin: 30vh;
+}
