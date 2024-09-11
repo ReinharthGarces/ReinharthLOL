@@ -28,20 +28,14 @@ export class ChampionsDetailsComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      if (typeof Atropos !== 'undefined') {
-        Atropos({
-          el: '.my-atropos',
-          activeOffset: 50,
-          shadow: false,
-          rotate: true,
-          rotateTouch: true,
-        });
-      } else {
-        console.error('Atropos is not defined.');
-      }
-    }, 100);
+  ngAfterViewInit() {
+    Atropos({
+      el: '.my-atropos',
+      activeOffset: 50,
+      shadow: false,
+      rotate: true,
+      rotateTouch: true,
+    });
   }
 
   getChampionData(championName: string) {

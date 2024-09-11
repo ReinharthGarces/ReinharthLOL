@@ -6,9 +6,7 @@
 } 
 
 @else {
-<section class="main">
-  <!-- <div class="main-overlay"></div> -->
-  <h1 class="main-title">Detalles del Campeón</h1>
+<section class="body">
   <div class="champion-info-container">
   <!-- Atropos container -->
   <div class="atropos my-atropos">
@@ -16,7 +14,7 @@
     <div class="atropos-scale">
       <div class="atropos-rotate">
         <div class="atropos-inner">
-          <img class="atropos-image" [src]="champImageUrl" alt="{{ champData.data[champName].name }} loading screen" />
+          <img class="atropos-image" [src]="champImageUrl" alt="{{ champData.data[champName].name }} loading screen"/>
         </div>
         <p class="title">{{ champData.data[champName].title }}</p>
       </div>

@@ -8,28 +8,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
-  z-index: -2;
   width: 100%;
-  height: 150%;
-
-  .main-overlay {
-    position: absolute;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.main-title{
-  text-align: center;
-  margin-top: 4%;
-  color: $quaternary-color;
-  font-family: $title-font;
-  font-weight: 800;
-  font-style: normal;
-  font-size: 3.5rem;
-  text-shadow: $deeper-text;
+  height: 150%; 
 }
 
 // Grid container
@@ -42,7 +22,6 @@
   height: 100vh;
 }
 
-// Atropos champion image container
 .my-atropos {
   grid-column: span 2 / span 2;
   grid-row: span 5 / span 5;
@@ -69,10 +48,10 @@
   }
 
   .atropos-inner {
-    width: 16vw;
-    height: 64vh;
+    width: 15vw;
+    height: 50vh;
     margin: 0 auto;
-    border-radius: 20px;
+    border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
     .atropos-image {
@@ -81,21 +60,19 @@
     }
   }
 }
-
-// Champion history card
 .champion-history {
   grid-column: span 2 / span 2;
   grid-row: span 3 / span 3;
   background-color: $primary-color;
   box-shadow: $deeper-card;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  text-align: center;
-  padding-inline: 10px;
+
+  .history-title {
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 4vh;
+  }
 }
 
-// Tags section
 .tags {
   grid-column: span 2 / span 2;
   grid-column-start: 3;
@@ -116,7 +93,6 @@
   }
 }
 
-// Tips section
 .tips {
   grid-column: span 2 / span 2;
   grid-row: span 3 / span 3;
@@ -125,81 +101,84 @@
   background-color: $quaternary-color;
   box-shadow: $deeper-card;
   text-align: center;
-  align-items: center;
-  justify-content: center;
-  padding-inline: 10px;
 }
 
-// Skills container
 .skills {
-  grid-column: span 2 / span 2;
-  grid-row: span 6 / span 6;
-  grid-column-start: 5;
-  grid-row-start: 1;
-  background-color: $quaternary-color;
-  box-shadow: $deeper-card;
-  border-radius: 15px;
-  gap: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr));
-  grid-gap: 10px; 
-  padding: 10px;
+  grid-area: skills;
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Espaciado entre las habilidades */
 }
 
-// Skills title
-.skills-title {
-  grid-column: span 2;
-  text-align: center;
-  align-content: center;
+.skills-title{
+  align-self: center;
+  margin: 5px;
 }
 
-// Skill card
 .card {
   position: relative;
-  width: 100%;
-  height: 100%;
-  background: $secondary-gradient;
+  width: 15vw;
+  height: 30vh;
+  background:$secondary-gradient;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  box-shadow: 0 0 0 2px #ffffff80;
+  perspective: 1000px;
+  box-shadow: 0 0 0 5px #ffffff80;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
 
-.card h2 {
-  align-self: flex-start;
-}
+  h2 {
+    align-self: flex-start;
+  }
 
 .card img {
-  width: 70%;
-  height: 70%;
+  width: 75%;
+  height: 75%;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin: 5px;
   border-radius: 15px;
   box-shadow: $deeper-card;
 }
 
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+  }
 }
 
+//Card-content
 .card__content {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 12px;
+  padding-inline: 15px;
   box-sizing: border-box;
   text-align: justify;
   line-height: 1.4;
-  background-color: #f2f2f2;
+  overflow: auto;
+  background-color: $primary-color;
   transform: rotateX(-90deg);
   transform-origin: bottom;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: lighten($primary-color, 20%);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: darken($primary-color, 10%);
+    border-radius: 10px;
+    border: 4px solid transparent;
+  }
 }
 
 .card:hover .card__content {
@@ -207,30 +186,26 @@
 }
 
 .card__title {
-  margin: 0;
   text-align: center;
   padding: 5px;
-  font-size: larger;
+  font-size: x-large;
+  font-family: $title-font;
+  color: $quaternary-color;
+  text-shadow: $deeper-text;
 }
 
 .card__description {
-  color: $primary-color;
+  color: antiquewhite;
   font-size: smaller;
 }
 
-
-// Spinner
-.spinner-container {
-  display: flex;
-  flex-direction: column;
-  gap: 4%;
-  justify-content: center;
-  align-items: center;
-  height: 40vh;
-  margin: 30vh;
-
-  .spinner {
-    color: #FF5733;
-  }
-}
-
+//Spinner
+// .spinner-container {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 3%;
+//   justify-content: center;
+//   align-items: center;
+//   height: 30vh;
+//   margin: 20vh;
+// }
