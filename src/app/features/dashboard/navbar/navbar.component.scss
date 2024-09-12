@@ -9,7 +9,7 @@
   padding: 4% 1%;
   
   .title {
-    color: $secondary-color;
+    color: $senary-color;
     font-family: $title-font;
     font-weight: 800;
     font-style: normal;
@@ -18,26 +18,28 @@
     cursor: pointer;
   }
     a {
-      color: white;
+      color: antiquewhite;
       text-transform: uppercase;
       font-weight: bold;
       gap: 10px;
     }
 
     a:hover {
-      background: $tertiary-color
+      background: $tertiary-color;
     }
 
   .cta-button {
-    background: $secondary-color;
+    background: $senary-color;
     color: $primary-color;
     font-weight: bold;
 
     &:hover {
       background-color: $tertiary-color;
+      color: antiquewhite;
     }
   }
 }
+
 
 // @media (max-width: 768px) {
 //   .navbar nav {

@@ -14,7 +14,7 @@
 
   .main-overlay {
     position: absolute;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
     z-index: -1;
     width: 100%;
     height: 100%;
@@ -23,13 +23,24 @@
   .main-title{
     text-align: center;
     margin-top: 4%;
-    color: $quaternary-color;
+    color: $septenary-color;
     font-family: $title-font;
     font-weight: 800;
     font-style: normal;
     font-size: 3.5rem;
-    text-shadow: $deeper-text;
+    text-shadow: $bento-card;
   }
+}
+
+// Spinner
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4%;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  margin: 30vh;
 }
 
 // Grid container
@@ -51,7 +62,7 @@
 
   .name {
     text-align: center;
-    color: $secondary-color;
+    color: $senary-color;
     font-family: $title-font;
     font-weight: 800;
     font-size: 3.5rem;
@@ -64,14 +75,14 @@
     font-weight: 600;
     font-size: 2rem;
     text-shadow: $deeper-text;
-    color: $secondary-color;
+    color: $senary-color;
     padding-top: 5px;
   }
 
   .atropos-inner {
     width: 18vw;
     height: 65vh;
-    margin: 0 auto;
+    margin-inline: auto;
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
@@ -87,12 +98,21 @@
   grid-column: span 2 / span 2;
   grid-row: span 3 / span 3;
   background-color: $primary-color;
-  box-shadow: $deeper-card;
   align-items: center;
   justify-content: center;
   gap: 15px;
   text-align: center;
+  color: $quinary-color;
   padding-inline: 10px;
+  transition: $basic-transition;
+
+  h2{
+    text-shadow: $deeper-text;
+  }
+  &:hover {
+    box-shadow: $bento-card;
+    transform: $basic-transform;
+  }
 }
 
 //Tags
@@ -102,17 +122,28 @@
   grid-row-start: 6;
   justify-content: center;
   align-items: center;
-  background-color: $primary-color;
+  background-color: $tertiary-color;
   box-shadow: $deeper-card;
   font-size: larger;
   font-weight: 400;
   text-align: center;
+  color: $quinary-color;
+  transition: $basic-transition;
+
+  &:hover {
+    box-shadow: $bento-card;
+    transform: $basic-transform;
+  }
 
   .difficulty {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    h5 {
+      text-shadow: $deeper-text;
+    }
   }
 }
 
@@ -126,10 +157,20 @@
   box-shadow: $deeper-card;
   text-align: center;
   align-items: center;
+  color: $quinary-color;
   justify-content: center;
   padding-inline: 10px;
-}
+  transition: $basic-transition;
 
+  h2{
+    text-shadow: $deeper-text;
+  }
+
+  &:hover {
+    box-shadow: $bento-card;
+    transform: $basic-transform;
+  }
+}
 
 //Skills
 .skills {
@@ -137,19 +178,25 @@
   grid-row: span 6 / span 6;
   grid-column-start: 5;
   grid-row-start: 1;
-  background-color: $quaternary-color;
+  background-color: $secondary-color;
   box-shadow: $deeper-card;
   border-radius: 15px;
-  gap: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr));
-  grid-gap: 10px; 
-  padding: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(10vw, 1fr));
+  grid-gap: 15px; 
+  padding: 15px;
+  transition: $basic-transition;
+
+  &:hover {
+    box-shadow: $bento-card;
+    transform: $basic-transform;
+  }
 
   .skills-title{
     grid-column: span 2;
     text-align: center;
     align-content: center;
+    text-shadow: $deeper-text;
   }
 }
 
@@ -165,11 +212,13 @@
   justify-content: center;
   overflow: hidden;
   perspective: 1000px;
-  box-shadow: 0 0 0 2px #ffffff80;
+  box-shadow: 0 0 0 2px $quinary-color;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   h2 {
     align-self: flex-start;
+    color: $septenary-color !important;
+    text-shadow: $deeper-text;
   }
 
   img {
@@ -229,7 +278,7 @@
   padding: 5px;
   font-size: x-large;
   font-family: $title-font;
-  color: $quaternary-color;
+  color: $septenary-color;
   text-shadow: $deeper-text;
 }
 
@@ -238,14 +287,74 @@
   font-size: smaller;
 }
 
+// Media query para pantallas medianas (tablets)
+@media (max-width: 1024px) {
+  .champion-info-container {
+    grid-template-columns: repeat(4, 1fr); // Reducir el número de columnas
+    grid-template-rows: repeat(6, 1fr);
+  }
 
-// Spinner
-.spinner-container {
-  display: flex;
-  flex-direction: column;
-  gap: 4%;
-  justify-content: center;
-  align-items: center;
-  height: 40vh;
-  margin: 30vh;
+  .my-atropos {
+    grid-column: span 2 / span 2; 
+    grid-row: span 4 / span 4; 
+    .atropos-inner {
+      width: 30vw; // Ajustar el tamaño
+      height: 50vh;
+    }
+  }
+
+  .skills {
+    grid-column: span 4 / span 4; // Ocupa todo el ancho
+    grid-row: span 4 / span 4;
+  }
+
+  .tags {
+    grid-column: span 2 / span 2; // Ajuste proporcional al cambio de columnas
+  }
+
+  .tips {
+    grid-column: span 2 / span 2;
+  }
+
+  .champion-history {
+    grid-column: span 4 / span 4;
+    grid-row: span 2 / span 2;
+  }
+}
+
+// Media query para pantallas pequeñas (teléfonos)
+@media (max-width: 600px) {
+  .champion-info-container {
+    grid-template-columns: repeat(2, 1fr); // Reducir a 2 columnas
+    grid-template-rows: repeat(8, 1fr); // Más filas para mejor distribución
+    gap: 5px;
+  }
+
+  .my-atropos {
+    grid-column: span 2 / span 2; 
+    grid-row: span 3 / span 3; 
+    .atropos-inner {
+      width: 40vw; // Reducir el tamaño de la imagen
+      height: 40vh;
+    }
+  }
+
+  .skills {
+    grid-column: span 2 / span 2; // Ocupa toda la columna
+    grid-row: span 4 / span 4;
+    grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr)); // Ajustar el tamaño de las cards
+  }
+
+  .tags {
+    grid-column: span 2 / span 2; // Ajustar a una fila completa
+  }
+
+  .tips {
+    grid-column: span 2 / span 2;
+  }
+
+  .champion-history {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+  }
 }
