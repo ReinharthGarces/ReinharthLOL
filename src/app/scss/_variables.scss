@@ -26,10 +26,14 @@ $bento-card:
   -8px -8px 20px rgba(255, 255, 255, 0.15);
 
 //Gradients
-$first-gradient: linear-gradient(to top, rgb(18, 18, 18, 0.92), $primary-color);
-$second-gradient: linear-gradient(to bottom, rgb(18, 18, 18, 0.92), $primary-color);
-$third-gradient: linear-gradient(to top, rgb(18, 18, 18, 0.92), $tertiary-color);
-$fourth-gradient: linear-gradient(to bottom, rgb(18, 18, 18, 0.92), $tertiary-color);
+$first-gradient: linear-gradient(to top, rgb(18, 18, 18, 0.9), $primary-color);
+$second-gradient: linear-gradient(to bottom, rgb(18, 18, 18, 0.9), $primary-color);
+$third-gradient: linear-gradient(to top, rgb(18, 18, 18, 0.9), $tertiary-color);
+$fourth-gradient: linear-gradient(to bottom, rgb(18, 18, 18, 0.9), $tertiary-color);
+
+//Transition
+$basic-transition: box-shadow 0.3s ease, transform 0.3s ease;
+$basic-transform: translateY(-5px);
 
 //Transition
 $basic-transition: box-shadow 0.3s ease, transform 0.3s ease;

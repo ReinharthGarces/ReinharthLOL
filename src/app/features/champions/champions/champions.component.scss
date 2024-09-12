@@ -1,15 +1,47 @@
 @import "../../../scss/variables";
 
-.body {
+.main{
   background-image: url('../../../assets/summoner-rift3.jpg');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
+  z-index: 1;
   width: 100%;
+
+  .main-overlay {
+    position: absolute;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+  }
+
+  .main-title{
+    text-align: center;
+    margin-top: 4%;
+    color: $septenary-color;
+    font-family: $title-font;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 3.5rem;
+    text-shadow: $bento-card;
+  }
 }
 
+// Spinner
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4%;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  margin: 30vh;
+}
+
+// Grid container
 .champions-container {
   display: flex;
   flex-direction: column;
@@ -40,15 +72,20 @@ mat-grid-tile:hover {
 }
 
 mat-card-header {
-  background-color: $tertiary-color;
+  background-color: $secondary-color;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 12px;
+  box-shadow: 
+    inset 0 4px 8px rgba(0, 0, 0, 0.25), 
+    0 10px 20px rgba(0, 0, 0, 0.2),
+    0 6px 6px rgba(0, 0, 0, 0.15);   
   border-radius: 10px 10px 0 0;
 
   mat-card-subtitle{
     font-size: smaller;
+    color: antiquewhite;
   }
 }
 
@@ -62,13 +99,16 @@ mat-card-footer {
 }
 
 mat-card-footer button {
-  color: #fff;
+  color: $quinary-color;
 }
 
 mat-card-footer button:hover {
-  background-color: $tertiary-color;
+  background-color: $senary-color;
+  color: $primary-color;
+  font-weight: bold;
 }
 
+//Paginator
 mat-paginator {
   display: flex;
   justify-content: center;

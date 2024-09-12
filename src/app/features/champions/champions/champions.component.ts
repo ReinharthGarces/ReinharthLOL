@@ -9,6 +9,7 @@ import { environment } from '../../../../environments/environmet.development';
   styleUrl: './champions.component.scss'
 })
 export class ChampionsComponent implements OnInit{
+  public isLoading: boolean = true;
   cols: any;
   champions: any[] = [];
   displayedChampions: any[] = []; // Campeones que se mostrarán en la página actual
@@ -27,8 +28,8 @@ export class ChampionsComponent implements OnInit{
   constructor(private championsService: ChampionsService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.setCols(window.innerWidth);
-
     const storedPageIndex = localStorage.getItem('pageIndex');
     if (storedPageIndex) {
       this.pageIndex = parseInt(storedPageIndex, 10);
@@ -40,6 +41,7 @@ export class ChampionsComponent implements OnInit{
         champion.imageUrl = `${this.champImgURL}/${champion.id}_0.jpg`;
       });
       this.updateDisplayedChampions();
+      this.isLoading = false;
     });
   }
 

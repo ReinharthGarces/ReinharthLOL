@@ -1,4 +1,16 @@
-<section class="body">
+@if ( isLoading ) {
+<section class="main">
+  <div class="spinner-container">
+    <mat-spinner class="spinner"></mat-spinner>
+    <h2 appTitleStyle>Cargando Informacion...</h2>
+  </div>
+</section>
+} 
+
+@else {
+<section class="main">
+  <div class="main-overlay"></div>
+  <h1 class="main-title">Campeones</h1>
   <div class="champions-container">
     <mat-grid-list [cols]="cols" gutterSize="30px" rowHeight="1:1.7">
       <mat-grid-tile *ngFor="let champion of displayedChampions">
@@ -24,4 +36,4 @@
     aria-label="Select page">
   </mat-paginator>
 </section>
-
+}
