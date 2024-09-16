@@ -1,4 +1,4 @@
-<section class="body">
+<!-- <section class="body">
   <div class="runes-grid">
     <mat-card *ngFor="let rune of runes" class="rune-card">
       <mat-card-header>
@@ -10,5 +10,22 @@
       </mat-card-content>
     </mat-card>
   </div>
-</section>
+</section> -->
 
+<section class="body">
+  <mat-tab-group>
+    <mat-tab class="tabs" *ngFor="let rune of runes; let i = index" [label]="rune.name">
+      <img class="runesWallpaper" [src]="'/runes/' + rune.name + '.png'" alt="{{ rune.name }}">
+        <div class="runes-grid">
+          <mat-card *ngFor="let subRune of rune.subRunes" class="rune-card">
+            <mat-card-header>
+              <mat-card-title appTitleStyle>{{ subRune.name }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{ subRune.shortDesc }}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+    </mat-tab>
+  </mat-tab-group>
+</section>

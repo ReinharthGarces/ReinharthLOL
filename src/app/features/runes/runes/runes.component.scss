@@ -1,24 +1,60 @@
 @import "../../../scss/variables";
 
+// .body {
+//   margin: 10%;
+// }
+
+// .runes-grid {
+//   display: grid;
+//   grid-template-columns: repeat(
+//     auto-fill,
+//     minmax(30vw, 1fr));
+//   gap: 5%;
+// }
+
+// .rune-card {
+//   img{
+//     height: 100%;
+//   }
+
+//   transition: transform 0.3s ease;
+//   &:hover {
+//     transform: scale(1.05);
+//   }
+// }
+
 .body {
-  margin: 10%;
-}
-
-.runes-grid {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(30vw, 1fr));
-  gap: 5%;
-}
-
-.rune-card {
-  img{
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  
+  .runesWallpaper{
+    width: 100%;
     height: 100%;
-  }
-
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.05);
+    opacity: 0,8;
+    z-index: -1;
   }
 }
+
+.tabs{
+  color: brown !important;
+}
+// .runes-grid {
+//   display: grid;
+//   grid-template-columns: repeat(
+//     auto-fill,
+//     minmax(30vw, 1fr));
+//   gap: 5%;
+// }
+
+// .rune-card {
+//   img {
+//     height: 100%;
+//   }
+
+//   transition: transform 0.3s ease;
+
+//   &:hover {
+//     transform: scale(1.05);
+//   }
+// }
