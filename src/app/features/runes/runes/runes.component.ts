@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RunesService } from '../../../core/runes.service';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-runes',
   templateUrl: './runes.component.html',
@@ -13,9 +14,11 @@ export class RunesComponent implements OnInit {
 
   ngOnInit(): void {
     this.runesService.getRunes().subscribe(data => {
-      // Aquí asumimos que las primeras 5 runas son las principales
-      // Cada una tendrá un array `subRunes` que contiene las runas relacionadas
-      this.runes = data.slice(0, 5);  // Las 5 runas principales
+      this.runes = data.slice(0, 5);
     });
+  }
+
+  getRuneImageUrl(runeIcon: string): string {
+    return this.runesService.getRuneImageUrl(runeIcon);
   }
 }
