@@ -37,38 +37,44 @@
   gap: 4%;
   justify-content: center;
   align-items: center;
-  height: 40vh;
+  height: 35vh;
   margin: 30vh;
 }
 
-// Grid container
+// // Grid container
 .champions-container {
   display: flex;
+  text-align: center;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
 
-mat-grid-list {
-  width: 90%;
-  max-width: 1400px;
-  margin: 5% auto 0 auto;
-}
-
-mat-grid-tile {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 8px;
-}
-
-mat-grid-tile:hover {
-  transform: scale(1.05);
+// Configuración de la grilla
+.champions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  width: 80%;
+  max-width: 1300px;
+  margin: 4% auto;
 }
 
 .champion-card {
-  background-color: $primary-color;
-  width: 80%;
   height: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: $deeper-card;
+}
+
+.mat-mdc-card {
+  width: auto;
+  height: 100%;
+  background-color: $primary-color;
+}
+
+.champion-card:hover {
+  transform: scale(1.05);
 }
 
 mat-card-header {
@@ -76,25 +82,27 @@ mat-card-header {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 12px;
-  box-shadow: 
-    inset 0 4px 8px rgba(0, 0, 0, 0.25), 
-    0 10px 20px rgba(0, 0, 0, 0.2),
-    0 6px 6px rgba(0, 0, 0, 0.15);   
+  padding: 5%;
+  box-shadow: $deeper-card-inset;
   border-radius: 10px 10px 0 0;
 
-  mat-card-subtitle{
-    font-size: smaller;
-    color: antiquewhite;
+  mat-card-title {
+    color: $senary-color;
+    font-family: $title-font;
+    font-weight: 800;
+    font-size: 2rem;
+    margin-block: 4%;
+    text-shadow: $deeper-text;
   }
 }
 
 mat-card img {
-  height: 75%;
+  height: 80%;
+  overflow: hidden;
 }
 
 mat-card-footer {
-  margin-top: 4%;
+  margin: 3%;
   align-self: center;
 }
 
@@ -114,5 +122,32 @@ mat-paginator {
   justify-content: center;
   align-items: center;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  height: 5%;
+  width: auto;
+  font-family: $title-font;
+  font-size: large;
+  color: $quinary-color;
+  background: $first-gradient;
+  border-radius: 15px;
+  box-shadow: $deeper-card-inset;
+  margin-bottom: 5vh;
+}
+
+// //Mobile adjustment
+@media (max-width: 760px) {
+  .champions-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-auto-rows: minmax(200px, auto);
+    gap: 2rem;
+  }
+
+  mat-paginator {
+    width: 80%;
+    margin-top: 4vh;
+    font-size: smaller;
+  }
+
+  .spinner-container {
+    height: 25vh;
+    margin: 20vh;
+  }
 }

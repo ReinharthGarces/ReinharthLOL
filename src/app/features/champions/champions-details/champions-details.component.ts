@@ -1,14 +1,15 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Atropos } from 'atropos';
 import { ChampionsService } from '../../../core/champions.service';
 import { environment } from '../../../../environments/environmet.development';
 import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-champions-details',
   templateUrl: './champions-details.component.html',
   styleUrl: './champions-details.component.scss'
 })
-export class ChampionsDetailsComponent implements OnInit, AfterViewInit {
+export class ChampionsDetailsComponent implements OnInit {
   public isLoading: boolean = true;
   public champData: any;
   public champName!: string;
@@ -28,22 +29,6 @@ export class ChampionsDetailsComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      if (typeof Atropos !== 'undefined') {
-        Atropos({
-          el: '.my-atropos',
-          activeOffset: 40,
-          shadow: false,
-          rotate: true,
-          rotateTouch: true,
-        });
-      } else {
-        console.error('Atropos is not defined.');
-      }
-    }, 200);
-  }
-
   getChampionData(championName: string) {
     this.isLoading = true;
     this.championsService.getChampionByName(championName).subscribe({
@@ -58,6 +43,21 @@ export class ChampionsDetailsComponent implements OnInit, AfterViewInit {
         // Usa el servicio para extraer datos de los hechizos
         this.spellsData = this.championsService.extractSpellsData(this.champData.data[championName]);
         this.isLoading = false;
+
+        //Inicio Atropos
+        setTimeout(() => {
+          if (typeof Atropos !== 'undefined') {
+            Atropos({
+              el: '.my-atropos',
+              activeOffset: 40,
+              shadow: false,
+              rotate: true,
+              rotateTouch: true,
+            });
+          } else {
+            console.error('Atropos is not defined.');
+          }
+        }, 100);
       },
       error: (error) => {
         console.error("Error fetching champion data:", error);

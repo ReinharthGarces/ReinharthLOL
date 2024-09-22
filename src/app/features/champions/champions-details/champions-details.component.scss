@@ -22,11 +22,10 @@
 
   .main-title{
     text-align: center;
-    margin-top: 4%;
+    margin-block: 5%;
     color: $septenary-color;
     font-family: $title-font;
     font-weight: 800;
-    font-style: normal;
     font-size: 3.5rem;
     text-shadow: $bento-card;
   }
@@ -41,6 +40,10 @@
   align-items: center;
   height: 40vh;
   margin: 30vh;
+
+  h2{
+    font-size: xx-large;
+  }
 }
 
 // Grid container
@@ -100,20 +103,46 @@
   background-color: $primary-color;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
   text-align: center;
   color: $quinary-color;
-  padding-inline: 10px;
+  padding-inline: 8px;
+  overflow: hidden;
   transition: $basic-transition;
   border-radius: 30px;
-  box-shadow: 
-    inset 0 4px 8px rgba(0, 0, 0, 0.25),
-    0 10px 20px rgba(0, 0, 0, 0.2), 
-    0 6px 6px rgba(0, 0, 0, 0.15); 
+  box-shadow: $deeper-card-inset;
 
   h2{
     text-shadow: $deeper-text;
   }
+  &:hover {
+    box-shadow: $bento-card;
+    transform: $basic-transform;
+  }
+}
+
+//Tips
+.tips {
+  grid-column: span 2 / span 2;
+  grid-row: span 3 / span 3;
+  grid-column-start: 1;
+  grid-row-start: 4;
+  background-color: $secondary-color;
+  box-shadow: $deeper-card;
+  text-align: center;
+  align-items: center;
+  color: $quinary-color;
+  justify-content: center;
+  padding-inline: 10px;
+  overflow: hidden;
+  transition: $basic-transition;
+  border-radius: 30px;
+  box-shadow: $deeper-card-inset;
+
+  h2{
+    text-shadow: $deeper-text;
+  }
+
   &:hover {
     box-shadow: $bento-card;
     transform: $basic-transform;
@@ -135,10 +164,7 @@
   color: $quinary-color;
   transition: $basic-transition;
   border-radius: 30px;
-  box-shadow: 
-    inset 0 4px 8px rgba(0, 0, 0, 0.25), 
-    0 10px 20px rgba(0, 0, 0, 0.2),
-    0 6px 6px rgba(0, 0, 0, 0.15);    
+  box-shadow: $deeper-card-inset;
 
   &:hover {
     box-shadow: $bento-card;
@@ -157,36 +183,6 @@
   }
 }
 
-//Tips
-.tips {
-  grid-column: span 2 / span 2;
-  grid-row: span 3 / span 3;
-  grid-column-start: 1;
-  grid-row-start: 4;
-  background-color: $secondary-color;
-  box-shadow: $deeper-card;
-  text-align: center;
-  align-items: center;
-  color: $quinary-color;
-  justify-content: center;
-  padding-inline: 10px;
-  transition: $basic-transition;
-  border-radius: 30px;
-  box-shadow: 
-    inset 0 4px 8px rgba(0, 0, 0, 0.25), 
-    0 10px 20px rgba(0, 0, 0, 0.2),
-    0 6px 6px rgba(0, 0, 0, 0.15);    
-
-  h2{
-    text-shadow: $deeper-text;
-  }
-
-  &:hover {
-    box-shadow: $bento-card;
-    transform: $basic-transform;
-  }
-}
-
 //Skills
 .skills {
   grid-column: span 2 / span 2;
@@ -198,14 +194,11 @@
   border-radius: 15px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(10vw, 1fr));
-  grid-gap: 12px; 
+  grid-gap: 20px; 
   padding: 15px;
   transition: $basic-transition;
   border-radius: 30px;
-  box-shadow: 
-    inset 0 4px 8px rgba(0, 0, 0, 0.25),
-    0 10px 20px rgba(0, 0, 0, 0.2),
-    0 6px 6px rgba(0, 0, 0, 0.15);    
+  box-shadow: $deeper-card-inset;
 
   &:hover {
     box-shadow: $bento-card;
@@ -218,163 +211,298 @@
     align-content: center;
     text-shadow: $deeper-text;
   }
-}
 
-//Skills-cards
-.card {
-  display: flex;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background:$second-gradient;
-  border-radius: 10px;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  perspective: 1000px;
-  box-shadow: 0 0 0 2px $quinary-color;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  //Skills-cards
+  .card {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background:$second-gradient;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    perspective: 2000px;
+    box-shadow: $bento-card;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-  h2 {
-    align-self: flex-start;
-    color: $septenary-color !important;
+    h2 {
+      align-self: flex-start;
+      color: $septenary-color !important;
+      text-shadow: $deeper-text;
+    }
+
+    img {
+      width: 70%;
+      height: 70%;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin: 5px;
+      border-radius: 15px;
+      box-shadow: $deeper-card-inset;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  //Card-content
+  .card__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-inline: 15px;
+    box-sizing: border-box;
+    text-align: justify;
+    line-height: 1.4;
+    overflow: auto;
+    background-color: $primary-color;
+    transform: rotateX(-90deg);
+    transform-origin: bottom;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: lighten($primary-color, 20%);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: darken($primary-color, 10%);
+      border-radius: 10px;
+      border: 4px solid transparent;
+    }
+  }
+
+  .card:hover .card__content {
+    transform: rotateX(0deg);
+  }
+
+  .card__title {
+    text-align: center;
+    padding: 5px;
+    font-size: x-large;
+    font-family: $title-font;
+    color: $septenary-color;
     text-shadow: $deeper-text;
   }
 
-  img {
-    width: 70%;
-    height: 70%;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    margin: 5px;
-    border-radius: 15px;
-    box-shadow: $deeper-card;
-  }
-
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+  .card__description {
+    color: antiquewhite;
+    font-size: smaller;
   }
 }
 
-//Card-content
-.card__content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding-inline: 15px;
-  box-sizing: border-box;
-  text-align: justify;
-  line-height: 1.4;
-  overflow: auto;
-  background-color: $tertiary-color;
-  transform: rotateX(-90deg);
-  transform-origin: bottom;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-  &::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: lighten($primary-color, 20%);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: darken($primary-color, 10%);
-    border-radius: 10px;
-    border: 4px solid transparent;
-  }
-}
-
-.card:hover .card__content {
-  transform: rotateX(0deg);
-}
-
-.card__title {
-  text-align: center;
-  padding: 5px;
-  font-size: x-large;
-  font-family: $title-font;
-  color: $septenary-color;
-  text-shadow: $deeper-text;
-}
-
-.card__description {
-  color: antiquewhite;
-  font-size: smaller;
-}
 
 // Media query para pantallas medianas (tablets)
-@media (max-width: 1024px) {
-  .champion-info-container {
-    grid-template-columns: repeat(4, 1fr); // Reducir el número de columnas
-    grid-template-rows: repeat(6, 1fr);
-  }
-
-  .my-atropos {
-    grid-column: span 2 / span 2; 
-    grid-row: span 4 / span 4; 
-    .atropos-inner {
-      width: 30vw; // Ajustar el tamaño
-      height: 50vh;
+@media (max-width: 1200px) {
+  .main{
+    .main-title {
+      font-weight: 650;
+      font-size: 2.5rem;
     }
   }
 
-  .skills {
-    grid-column: span 4 / span 4; // Ocupa todo el ancho
-    grid-row: span 4 / span 4;
+  .champion-info-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    margin: 4% 2%;
+    gap: 10px;
   }
 
-  .tags {
-    grid-column: span 2 / span 2; // Ajuste proporcional al cambio de columnas
+  .my-atropos {
+    grid-column: span 2 / span 2;
+    grid-row: span 6 / span 6;
+    width: 100%;
+    height: 100%;
+  
+    .name {
+      font-weight: 600;
+      font-size: 2rem;
+    }
+
+    .title {
+      font-weight: 500;
+      font-size: 1.4rem;
+    }
+    .atropos-inner {
+      width: 45%;
+      height: 75%;
+    }
+  }
+
+  .champion-history {
+    grid-column: span 2 / span 2;
+    grid-row: span 4 / span 4;
+    grid-column-start: 3;
+    gap: 1px;
+    padding-inline: 0px;
+    line-height: 1.5;
+
+    h2{
+      font-size: xx-large;
+    }
+
+    .history-content {
+      font-size: smaller;
+    }
   }
 
   .tips {
     grid-column: span 2 / span 2;
+    grid-row: span 3 / span 3;
+    grid-column-start: 3;
+    grid-row-start: 5;
+    padding-inline: 0px;
+    line-height: 1.5;
+
+    h2{
+      font-size: xx-large;
+    }
+
+    p{
+      font-size: smaller;
+    }
   }
 
-  .champion-history {
+  .tags {
+    grid-column: span 2 / span 2;
+    grid-row-start: 7;
+    font-size: medium;
+    font-weight: 300;
+
+    h5{
+      font-size: large;
+    }
+
+    span{
+      font-size: smaller;
+    }
+  }
+
+  .skills {
     grid-column: span 4 / span 4;
-    grid-row: span 2 / span 2;
+    grid-row: span 3 / span 3;
+    grid-row-start: 8;
+    grid-gap: 12px; 
+    display: flex;
+    flex-direction: row;
+
+    h2{
+      font-size: medium;
+    }
+
+    .card {
+      margin: 2px;
+
+      .img{
+        width: 60%;
+        height: 60%;
+      }
+    }
+
+    .card__content {
+      text-align: center;
+      line-height: 1;
+      padding: 5px;
+    }
+
+    .card__title {
+      padding: 2px;
+      font-size: medium;
+    }
   }
 }
 
-// Media query para pantallas pequeñas (teléfonos)
+// Media query para pantallas chicas (Mobile)
 @media (max-width: 600px) {
+  .main {
+    height: 170%;
+    .main-title {
+      font-weight: 600;
+      font-size: 2.5rem;
+    }
+  }
+
   .champion-info-container {
-    grid-template-columns: repeat(2, 1fr); // Reducir a 2 columnas
-    grid-template-rows: repeat(8, 1fr); // Más filas para mejor distribución
-    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    margin-inline: 5vw;
   }
 
   .my-atropos {
-    grid-column: span 2 / span 2; 
-    grid-row: span 3 / span 3; 
+    width: 100%;
+    height: 100%;
+  
+    .name {
+      font-weight: 600;
+      font-size: 1.8rem;
+      margin-top: 2vh;
+    }
+
+    .title {
+      font-weight: 400;
+      font-size: 1.2rem;
+    }
     .atropos-inner {
-      width: 40vw; // Reducir el tamaño de la imagen
-      height: 40vh;
+      width: 40%;
+      height: 75%;
+    }
+  }
+
+  .tags {
+    font-size: smaller;
+    font-weight: 200;
+    margin-top: 2vh;
+    max-height: 12vh;
+
+    h5{
+      font-size: medium;
+    }
+
+    span{
+      font-size: smaller;
+    }
+  }
+
+  .tips {
+    line-height: 1.5;
+    min-height: 35vh;
+
+    h2{
+      font-size: x-large;
+    }
+
+    p{
+      font-size: smaller;
+    }
+  }
+
+  .champion-history {
+    gap: 1px;
+    padding-inline: 0px;
+    line-height: 1.5;
+    min-height: 40vh;
+    margin-bottom: 3vh;
+
+    h2{
+      font-size: x-large;
+    }
+
+    .history-content {
+      font-size: smaller;
     }
   }
 
   .skills {
-    grid-column: span 2 / span 2; // Ocupa toda la columna
-    grid-row: span 4 / span 4;
-    grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr)); // Ajustar el tamaño de las cards
-  }
-
-  .tags {
-    grid-column: span 2 / span 2; // Ajustar a una fila completa
-  }
-
-  .tips {
-    grid-column: span 2 / span 2;
-  }
-
-  .champion-history {
-    grid-column: span 2 / span 2;
-    grid-row: span 2 / span 2;
+    display: none;
   }
 }

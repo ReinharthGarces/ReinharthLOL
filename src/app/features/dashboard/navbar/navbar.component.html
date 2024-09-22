@@ -1,16 +1,37 @@
 <mat-toolbar class="navbar">
+  <button mat-icon-button class="mobile-menu-button" (click)="toggleSidenav()" aria-label="Toggle sidenav">
+    <mat-icon>menu</mat-icon>
+  </button>
+
   <h1 class="title" routerLink="/home">ReinharthLOL</h1>
 
-  <nav>
+  <nav class="desktop-menu">
     <a mat-button routerLink="/home">Inicio</a>
     <a mat-button routerLink="/champions">Campeones</a>
     <a mat-button routerLink="/spells">Hechizos</a>
     <a mat-button routerLink="/runes">Runas</a>
-    <a mat-button routerLink="/items">items</a>
+    <a mat-button routerLink="/items">Items</a>
   </nav>
 
-  <button mat-button class="cta-button" (click)="onGetStartedClick()">
-    About Us!
-  </button>
+  <button mat-button class="cta-button" (click)="openSnackBar(snackBarTemplate)">Hazme Click</button>
 </mat-toolbar>
 
+<mat-drawer-container class="sidenav-container">
+  <mat-drawer class="mobile-menu" #sidenav mode="push">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home" (click)="toggleSidenav()">Inicio</a>
+      <a mat-list-item routerLink="/champions" (click)="toggleSidenav()">Campeones</a>
+      <a mat-list-item routerLink="/spells" (click)="toggleSidenav()">Hechizos</a>
+      <a mat-list-item routerLink="/runes" (click)="toggleSidenav()">Runas</a>
+      <a mat-list-item routerLink="/items" (click)="toggleSidenav()">Items</a>
+    </mat-nav-list>
+  </mat-drawer>
+</mat-drawer-container>
+
+<!-- Template personalizado para el snackbar -->
+<ng-template #snackBarTemplate>
+  <div class="snackbar-content">
+    <span>Juegate una Ranked...</span>
+    <img src="/minion.png" alt="Minion" class="snackbar-icon">
+  </div>
+</ng-template>

@@ -2,9 +2,13 @@
 
 .home-parallax {
   position: relative;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  height: 170vh;  // Asegura que ocupe al menos la ventana completa
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  padding-bottom: 50vh; 
 }
 
 .home-background {
@@ -41,13 +45,14 @@
 
 h1 {
   font-size: 4rem;
-  font-family: "Kaushan Script", cursive;;
+  font-family: "Kaushan Script", cursive;
   text-shadow: $bento-card;
   font-weight: 950;
   margin-bottom: 20px;
 }
 
 p {
+  color: $quinary-color;
   font-size: 1.5rem;
   margin-bottom: 40px;
 }
@@ -113,5 +118,27 @@ p {
   p {
     font-size: 1rem;
     margin-bottom: 0;
+  }
+}
+
+//Mobile adjustment
+@media (max-width: 650px) {
+  h1 {
+    font-size: 3rem;
+    text-shadow: $deeper-text;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .features {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10vh;
   }
 }

@@ -1,14 +1,22 @@
 <section class="body">
-  <div class="runes-grid">
-    <mat-card *ngFor="let rune of runes" class="rune-card">
-      <mat-card-header>
-        <mat-card-title appTitleStyle>{{ rune.name }}</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image [src]="'/runes/' + rune.name + '.png'" alt="{{ rune.name }}">
-      <mat-card-content>
-        <p>{{ rune.shortDesc }}</p>
-      </mat-card-content>
-    </mat-card>
-  </div>
+  <mat-tab-group>
+    <mat-tab *ngFor="let rune of runes">
+      <ng-template mat-tab-label class="tab-title">
+        <span appTitleStyle class="rune-title">{{ rune.name }}</span>
+      </ng-template>
+      <!-- Contenedor de contenido con fondo parallax -->
+      <div class="parallax-container" [ngStyle]="{ 'background-image': 'url(/runes/' + rune.name + '.png)' }">
+        <div class="rune-grid">
+          <div *ngFor="let slot of rune.slots" class="rune">
+            <div *ngFor="let subRune of slot.runes" class="rune">
+              <img [src]="getRuneImageUrl(subRune.icon)" alt="{{ subRune.name }}" />
+              <h3 appTitleStyle>{{ subRune.name }}</h3>
+              <p>{{ subRune.shortDesc }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </section>
 

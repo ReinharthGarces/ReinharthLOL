@@ -25,14 +25,6 @@
     </div>
   </div>
   
-    <!-- Champion History -->
-    <mat-card class="champion-history">
-      <mat-card-header>
-        <h2 class="history-title" appTitleStyle>Historia</h2>
-      </mat-card-header>
-      <mat-card-content>{{ champData.data[champName].lore }}</mat-card-content>
-    </mat-card>
-
     <!-- Tags -->
     <mat-card class="tags">
       <mat-card-content>
@@ -54,6 +46,14 @@
         <p>{{ champData.data[champName].allytips }}</p>
       </mat-card-content>
     </mat-card>
+
+        <!-- Champion History -->
+        <mat-card class="champion-history">
+          <mat-card-header>
+            <h2 class="history-title" appTitleStyle>Historia</h2>
+          </mat-card-header>
+          <mat-card-content class="history-content">{{ champData.data[champName].lore }}</mat-card-content>
+        </mat-card>
 
     <!-- Skills -->
     <div class="skills" *ngIf="spellsData.length">

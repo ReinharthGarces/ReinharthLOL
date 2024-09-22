@@ -1,32 +1,37 @@
 @import "../../../scss/variables";
 
-
 .navbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
   background: $first-gradient;
+  height: 10vh;
   padding: 4% 1%;
   
   .title {
     color: $senary-color;
     font-family: $title-font;
     font-weight: 800;
-    font-style: normal;
     font-size: 3rem;
     text-shadow: $deeper-text;
     cursor: pointer;
   }
+
+  nav {
+    display: flex;
+    gap: 15px;
+    
     a {
-      color: antiquewhite;
+      color: $quinary-color;
       text-transform: uppercase;
       font-weight: bold;
-      gap: 10px;
     }
 
     a:hover {
       background: $tertiary-color;
+      padding: 5px 10px;
     }
+  }
 
   .cta-button {
     background: $senary-color;
@@ -35,22 +40,94 @@
 
     &:hover {
       background-color: $tertiary-color;
-      color: antiquewhite;
+      color: $quinary-color;
+    }
+  }
+
+  .mobile-menu-button {
+    display: none;
+  }
+
+
+//Responsive
+  @media (max-width: 900px) {
+    justify-content: space-between;
+    padding-inline: 3vw;
+
+    .title {
+      font-size: 2rem;
+    }
+
+    nav {
+      display: none;
+    }
+
+    .cta-button {
+      display: none;
+    }
+
+    .mobile-menu-button {
+      display: flex;
+      color: $quinary-color;
     }
   }
 }
 
+//sidenav
+.sidenav-container {
+  display: flex;
+  opacity: 0.9;
 
-// @media (max-width: 768px) {
-//   .navbar nav {
-//     display: none;
-//   }
+  //DobleHover
+  .mat-mdc-list-item-interactive::before {
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+  
+  mat-drawer {
+    background: linear-gradient(to top, rgba(18, 18, 18, 0.8), $primary-color);
+    width: 100%;
 
-//   .navbar .spacer {
-//     display: none;
-//   }
+    a {
+      font-weight: bold;
+      font-size: 1rem;
+      text-transform: uppercase;
+      text-align: center;
+    }
 
-//   .navbar .cta-button {
-//     margin-left: auto;
-//   }
-// }
+    a:hover {
+      background: $tertiary-color;
+    }
+  }
+
+  &.sidenav-open {
+    height: 25vh;
+  }
+}
+
+
+//SnackBar
+.snackbar-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .snackbar-icon {
+    width: 75px;
+    height: 45px;
+  }
+
+  span {
+    font-size: 20px;
+    color: $secondary-color;
+    font-weight: 750;
+    text-shadow: $bento-card;
+  }
+}
+
+::ng-deep .mdc-snackbar__label {
+  padding: 8px !important;
+}
+
+
