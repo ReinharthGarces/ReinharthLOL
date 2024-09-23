@@ -5,7 +5,6 @@
 
   .tab-title {
     opacity: 0.8;
-    border-radius: 10px 10px !important;
   }
   .rune-title {
     font-size: larger;
@@ -15,19 +14,18 @@
 
 .parallax-container {
   position: relative;
-  height: 150vh; /* Ajusta la altura del contenedor según tus necesidades */
-  background-size: cover;
-  background-attachment: fixed; /* Efecto parallax */
+  background-size: fill;
+  background-attachment: fixed;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.8;
+  opacity: 0.9;
 
   .content {
     position: relative;
-    z-index: 2; /* Asegura que el contenido esté encima del fondo */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente para el texto */
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.2);
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -49,41 +47,41 @@
 //Runes
 .rune-grid {
   display: grid;
-  height: 100%;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  margin: 10%;
 
-.rune {
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow:$deeper-card;
-  text-align: center;
-  position: relative;
-  max-width: 25vw;
-  max-height: 15vh;
-  overflow: scroll;
+  h3{
+    text-shadow: $deeper-text;
+  }
 }
 
 .rune img {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   margin-bottom: 10px;
   border-radius: 50%;
-  border: 2px solid #ccc;
+  border: 1px solid $quinary-color;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .rune p {
   font-size: small;
+  text-shadow: $deeper-text;
   color: $quinary-color
 }
 
-/* Responsive design */
+// Ajustes para pantallas pequeñas
 @media (max-width: 768px) {
   .rune-grid {
-    grid-template-columns: repeat(3, 1fr);
-    // grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr); // 2 columnas en pantallas más pequeñas
+  }
+}
+
+@media (max-width: 480px) {
+  .rune-grid {
+    grid-template-columns: 1fr; // 1 columna en pantallas muy pequeñas
   }
 }
