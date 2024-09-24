@@ -8,15 +8,20 @@ import { SpellsService } from '../../../core/spells.service';
 })
 
 export class SpellsComponent implements OnInit {
-
+  public isLoading: boolean = true;
   spells: any[] = [];
 
   constructor(private spellsService: SpellsService) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.spellsService.getSpells().subscribe(data => {
-      // El API devuelve un objeto con las spells en un atributo llamado 'data'
       this.spells = Object.values(data.data);
+      this.isLoading = false;
     });
+  }
+
+  getSpellImageUrl(imageName: string): string {
+    return this.spellsService.getSpellImageUrl(imageName);
   }
 }

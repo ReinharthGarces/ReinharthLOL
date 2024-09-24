@@ -9,9 +9,15 @@ import { environment } from '../../environments/environmet.development';
 
 export class SpellsService {
   private spellsURL = environment.spellsURL;
+  private spellsImgURL = environment.spellsImgURL
+
   constructor(private http: HttpClient) { }
 
   getSpells(): Observable<any> {
     return this.http.get(this.spellsURL );
+  }
+
+  getSpellImageUrl(imageName: string): string {
+    return `${this.spellsImgURL}/${imageName}`;
   }
 }

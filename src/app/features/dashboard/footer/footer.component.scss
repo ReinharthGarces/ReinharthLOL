@@ -104,3 +104,16 @@
     }
   }
 }
+
+//Mobile adjustment
+@media (max-width: 450px) {
+  .footer-info{
+    display: none;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

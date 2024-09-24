@@ -8,32 +8,32 @@
 } 
 
 @else {
-<section class="main">
-  <div class="main-overlay"></div>
-  <h1 class="main-title">Campeones</h1>
-  <div class="champions-container">
-    <mat-grid-list [cols]="cols" gutterSize="30px" rowHeight="1:1.7">
-      <mat-grid-tile *ngFor="let champion of displayedChampions">
-        <mat-card class="champion-card">
-          <mat-card-header>
-            <mat-card-title appTitleStyle>{{ champion.name }}</mat-card-title>
-            <mat-card-subtitle>{{ champion.title}}</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image [src]="champion.imageUrl" alt="{{ champion.name }}">
-          <mat-card-footer>
-            <button mat-raised-button [routerLink]="['/champions/details', champion.id]">VER MAS...</button>
-          </mat-card-footer>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div>
-
-  <mat-paginator showFirstLastButtons
-    hidePageSize
-    [length]="champions.length"
-    [pageSize]="pageSize"
-    (page)="handlePageEvent($event)"
-    aria-label="Select page">
-  </mat-paginator>
-</section>
+  <section class="main">
+    <div class="main-overlay"></div>
+    <h1 class="main-title">Campeones</h1>
+    <div class="champions-container">
+      <div class="champions-grid">
+        <div *ngFor="let champion of displayedChampions" class="champion-card">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{ champion.name }}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="champion.imageUrl" alt="{{ champion.name }}">
+            <mat-card-footer>
+              <button mat-raised-button [routerLink]="['/champions/details', champion.id]">VER MÁS...</button>
+            </mat-card-footer>
+          </mat-card>
+        </div>
+      </div>
+  
+      <mat-paginator
+        showFirstLastButtons
+        hidePageSize
+        [length]="champions.length"
+        [pageSize]="pageSize"
+        (page)="handlePageEvent($event)"
+        aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </section>
 }

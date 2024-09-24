@@ -20,4 +20,3 @@ export class RunesService {
     return `${this.runesImgURL}/${runeIcon}`
   }
 }
-

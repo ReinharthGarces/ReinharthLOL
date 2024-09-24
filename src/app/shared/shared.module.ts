@@ -18,8 +18,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateTagPipe } from './pipes/translate-tag.pipe';
 import { AppTitleSizeDirective } from './directives/title-style.directive';
+import { CleanTextPipe } from './pipes/clean-text.pipe';
+import { FilterSpellsPipe } from './pipes/filter-spells.pipe';
 
 
 const materialComponents = [
@@ -41,7 +44,8 @@ const materialComponents = [
   MatTabsModule,
   MatSelectModule,
   MatExpansionModule,
-  MatGridListModule
+  MatGridListModule,
+  MatSnackBarModule
 ];
 
 @NgModule({
@@ -49,11 +53,15 @@ const materialComponents = [
   exports: [ 
     materialComponents,
     TranslateTagPipe,
+    CleanTextPipe,
+    FilterSpellsPipe,
     AppTitleSizeDirective
   ],
   declarations: [
     TranslateTagPipe,
-    AppTitleSizeDirective
+    AppTitleSizeDirective,
+    CleanTextPipe,
+    FilterSpellsPipe
   ]
 })
 
