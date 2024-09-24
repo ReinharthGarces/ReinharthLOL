@@ -21,6 +21,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateTagPipe } from './pipes/translate-tag.pipe';
 import { AppTitleSizeDirective } from './directives/title-style.directive';
+import { CleanTextPipe } from './pipes/clean-text.pipe';
 
 
 const materialComponents = [
@@ -51,11 +52,13 @@ const materialComponents = [
   exports: [ 
     materialComponents,
     TranslateTagPipe,
+    CleanTextPipe,
     AppTitleSizeDirective
   ],
   declarations: [
     TranslateTagPipe,
-    AppTitleSizeDirective
+    AppTitleSizeDirective,
+    CleanTextPipe
   ]
 })
 

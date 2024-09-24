@@ -66,7 +66,7 @@
           <img [src]="passiveData.imageUrl" alt="{{ passiveData.name }} Image">
           <div class="card__content">
             <p class="card__title" appTitleStyle>{{ passiveData.name }}</p>
-            <p class="card__description">{{ passiveData.description }}</p>
+            <p class="card__description">{{ passiveData.description | cleanText }}</p>
           </div>
         </div>
       </div>
@@ -77,7 +77,7 @@
           <img [src]="spell.imageUrl" alt="{{ spell.name }} Image">
           <div class="card__content">
             <p class="card__title" appTitleStyle>{{ spell.name }}</p>
-            <p class="card__description">{{ spell.description }}.</p>
+            <p class="card__description">{{ spell.description | cleanText }}.</p>
           </div>
         </div>
       </div>

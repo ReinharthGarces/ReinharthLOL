@@ -5,7 +5,6 @@
 
   .tab-title {
     opacity: 0.8;
-    border-radius: 10px 10px !important;
   }
   .rune-title {
     font-size: larger;
@@ -13,22 +12,35 @@
   }
 }
 
+// Spinner
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4%;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  margin: 30vh;
+
+  h2{
+    font-size: xx-large;
+  }
+}
+
 .parallax-container {
   position: relative;
-  height: 150vh; /* Ajusta la altura del contenedor según tus necesidades */
-  background-size: cover;
-  background-attachment: fixed; /* Efecto parallax */
+  background-size: fill;
+  background-attachment: fixed;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.8;
+  opacity: 0.9;
 
   .content {
     position: relative;
-    z-index: 2; /* Asegura que el contenido esté encima del fondo */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente para el texto */
-    color: white;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.2);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -41,49 +53,78 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: 1;
   }
 }
 
 //Runes
-.rune-grid {
+.runes {
   display: grid;
-  height: 100%;
+  flex-direction: row;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.rune {
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow:$deeper-card;
+  grid-template-rows: minmax(20vh);
+  gap: 25px;
+  justify-items: center;
+  align-items: center;
+  margin: 10%;
   text-align: center;
-  position: relative;
-  max-width: 25vw;
-  max-height: 15vh;
-  overflow: scroll;
+  overflow: auto;
+
+  &:nth-child(n+2) {
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1px solid $quinary-color;
+      box-shadow: $bento-card;
+    }
+  }
+
+  h3{
+    text-shadow: $deeper-text;
+  }
+  
+  img {
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: small;
+    max-height: 20vh;
+    text-shadow: $deeper-text;
+    color: white;
+    overflow: auto;
+  }  
 }
 
-.rune img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  margin-bottom: 10px;
-  border-radius: 50%;
-  border: 2px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
 
-.rune p {
-  font-size: small;
-  color: $quinary-color
-}
-
-/* Responsive design */
+// Ajustes para pantallas pequeñas
 @media (max-width: 768px) {
-  .rune-grid {
+  .runes {
     grid-template-columns: repeat(3, 1fr);
-    // grid-template-rows: repeat(3, 1fr);
+    
+    &:nth-child(n+2) {
+      img {
+        width: 60px;
+        height: 60px;
+      }
+  }
+
+    img {
+      width: 160px;
+      height: 160px;
+    }
+
+    h3{
+      font-size: x-large;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .runes {
+    grid-template-columns: 1fr;
   }
 }
