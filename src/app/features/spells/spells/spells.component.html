@@ -9,19 +9,20 @@
   
 @else {
   <section class="body"> 
-    <h1 class="main-title">Hechizos</h1>
-    <div class="spells-container">
-      <div class="spells-grid">
-        <mat-card *ngFor="let spell of spells | filterSpells" class="spell-card">
-          <mat-card-header>
-            <mat-card-title appTitleStyle>{{ spell.name }}</mat-card-title>
-          </mat-card-header>
-          <img mat-card-image [src]="getSpellImageUrl(spell.image.full)" alt="{{ spell.name }}">
-          <mat-card-content>
-            <p>{{ spell.description }}</p>
-          </mat-card-content>
-        </mat-card>
-      </div>
+    <div class="spells-overlay"></div>
+    <h1 class="spells-title">Hechizos</h1>
+      <div class="spells-container">
+        <div class="spells-grid">
+          <mat-card *ngFor="let spell of spells | filterSpells" class="spell-card">
+            <mat-card-header>
+              <mat-card-title>{{ spell.name }}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="getSpellImageUrl(spell.image.full)" alt="{{ spell.name }}">
+            <mat-card-content>
+              <p>{{ spell.description }}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
     </div>
   </section>
 }

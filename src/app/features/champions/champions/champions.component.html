@@ -18,7 +18,7 @@
             <mat-card-header>
               <mat-card-title>{{ champion.name }}</mat-card-title>
             </mat-card-header>
-            <img mat-card-image [src]="champion.imageUrl" alt="{{ champion.name }}">
+            <img mat-card-image [src]="champion.imageUrl" [routerLink]="['/champions/details', champion.id]" alt="{{ champion.name }}">
             <mat-card-footer>
               <button mat-raised-button [routerLink]="['/champions/details', champion.id]">VER MÁS...</button>
             </mat-card-footer>

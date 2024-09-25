@@ -26,20 +26,22 @@
     font-weight: 800;
     font-style: normal;
     font-size: 3.5rem;
-    text-shadow: $bento-card;
+    text-shadow: $deeper-text;
+  }
+
+  // Spinner
+  .spinner-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4%;
+    justify-content: center;
+    align-items: center;
+    height: 35vh;
+    margin: 30vh;
   }
 }
 
-// Spinner
-.spinner-container {
-  display: flex;
-  flex-direction: column;
-  gap: 4%;
-  justify-content: center;
-  align-items: center;
-  height: 35vh;
-  margin: 30vh;
-}
+
 
 // // Grid container
 .champions-container {
