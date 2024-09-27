@@ -1,36 +1,172 @@
+@import "../../../scss/variables";
+
+.body {
+  position: relative;
+  background-image: url('../../../assets/summoner-rift2.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 1;
+  min-height: 100vh;
+  width: 100vw;
+
+  .items-overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+    z-index: -1;
+  }
+
+  .items-title {
+    text-align: center;
+    margin-block: 4%;
+    color: $septenary-color;
+    font-family: $title-font;
+    font-weight: 800;
+    font-size: 3.5rem;
+    text-shadow: $deeper-text;
+  }
+}
+
+//Spinner
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4%;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  margin: 30vh;
+
+  h2 {
+    font-size: xx-large;
+  }
+}
+
+// Grid container
 .items-container {
   display: flex;
-  justify-content: center;
-  padding: 20px;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 5%;
+}
 
-  mat-grid-list {
-    width: 100%;
+// Grid de items
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(150px, 280px)); /* Cambiado a max 200px */
+  gap: 30px;
+  z-index: 2;
+  margin-bottom: 8vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-card {
+  height: 450px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+  background-color: $primary-color;
+  border-radius: 10px;
+  box-shadow: $bento-card;
+  display: flex;
+  flex-direction: column;
+
+  mat-card-header {
+    background-color: $secondary-color;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5%;
+    box-shadow: $deeper-card-inset;
+    border-radius: 10px 10px 0 0;
+  }
+
+  mat-card-content {
+    color: $quinary-color;
+    padding: 5%;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $secondary-color;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $primary-color;
+      border-radius: 10px;
+      border: 4px solid transparent;
+    }
+  }
+
+  img {
+    align-self: center;
+    box-shadow: $deeper-card;
+    border-radius: 10px;
+    width: 70%;
+    height: 200px;
+  }
+}
+
+.item-card:hover {
+  transform: scale(1.05);
+  box-shadow: $bento-card;
+}
+
+// Efecto de blur cuando una card está siendo hovereada
+.items-grid:hover > .item-card:not(:hover) {
+  // filter: blur(4px);
+  transform: scale(0.90);
+}
+
+// Media queries para la responsividad
+@media (max-width: 1200px) {
+  .items-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .item-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    max-height: 50vh;
+  }
+}
 
-    &:hover {
-      transform: scale(1.05);
+@media (max-width: 768px) {
+  .body {
+    .items-title {
+      font-weight: 600;
+      font-size: 2.5rem;
     }
+  }
+  .items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-    img {
-      max-height: 100px;
-      object-fit: contain;
-    }
+@media (max-width: 500px) {
+  .items-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 
+  mat-card-header {
     mat-card-title {
-      font-weight: bold;
-      font-size: 1.2rem;
+      font-weight: 500;
+      font-size: 1rem;
     }
+  }
 
-    mat-card-content {
-      font-size: 0.9rem;
-    }
+  .item-card {
+    max-height: 90vh;
+  }
+
+  .items-container {
+    margin: 5vh 15vw;
   }
 }

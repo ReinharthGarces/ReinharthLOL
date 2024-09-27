@@ -9,9 +9,15 @@ import { environment } from '../../environments/environmet.development';
 
 export class ItemsService {
   private itemsURL = environment.itemsURL;
+  private itemsImgURL = environment.itemsImgURL;
+
   constructor(private http: HttpClient) {}
 
   getItems(): Observable<any> {
     return this.http.get(this.itemsURL);
+  }
+
+  getItemImageUrl(imageName: string): string {
+    return `${this.itemsImgURL}/${imageName}`;
   }
 }

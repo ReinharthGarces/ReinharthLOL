@@ -88,10 +88,16 @@
 
   p {
     font-size: smaller;
+    margin-inline: 8%;
     max-height: 20vh;
-    text-shadow: $deeper-text;
     color: white;
+    text-shadow: $deeper-text;
     overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
   }  
 }
 

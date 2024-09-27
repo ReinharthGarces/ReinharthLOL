@@ -8,4 +8,5 @@ export const environment = {
   spellsURL: 'https://ddragon.leagueoflegends.com/cdn/14.17.1/data/es_ES/summoner.json',
   spellsImgURL: 'https://ddragon.leagueoflegends.com/cdn/14.17.1/img/spell',
   itemsURL: 'http://ddragon.leagueoflegends.com/cdn/14.17.1/data/es_ES/item.json',
+  itemsImgURL: 'http://ddragon.leagueoflegends.com/cdn/14.17.1/img/item'
 };

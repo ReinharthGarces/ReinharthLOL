@@ -8,13 +8,31 @@ import { ItemsService } from '../../../core/items.service';
 })
 
 export class ItemsComponent implements OnInit {
+  public isLoading: boolean = true;
   items: any[] = [];
+  uniqueTags: Set<string> = new Set();
 
   constructor(private itemsService: ItemsService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.itemsService.getItems().subscribe((data) => {
       this.items = Object.values(data.data);
+      this.isLoading = false;
+      
+      // Extract unique tags from all items
+      this.items.forEach(item => {
+        if (item.tags) {
+          item.tags.forEach((tag: string) => this.uniqueTags.add(tag));
+        }
+      });
+
+      // Convert Set to Array if needed
+      console.log([...this.uniqueTags]);
     });
+  }
+
+  getItemImageUrl(imageName: string): string {
+    return `${this.itemsService.getItemImageUrl(imageName)}`;
   }
 }

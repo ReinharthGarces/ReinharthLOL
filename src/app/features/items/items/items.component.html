@@ -1,14 +1,29 @@
-<div class="items-container">
-  <mat-grid-list cols="4" rowHeight="200px" gutterSize="10px">
-    <mat-grid-tile *ngFor="let item of items">
-      <mat-card class="item-card">
-        <img mat-card-image [src]="'http://ddragon.leagueoflegends.com/cdn/14.17.1/img/item/' + item.image.full" alt="{{item.name}}">
-        <mat-card-title>{{ item.name }}</mat-card-title>
-        <mat-card-content>
-          <p>{{ item.description }}</p>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+@if ( isLoading ) {
+  <section class="body">
+    <div class="spinner-container">
+      <mat-spinner class="spinner"></mat-spinner>
+      <h2 appTitleStyle>Cargando Informacion...</h2>
+    </div>
+  </section>
+} 
+
+@else { 
+  <section class="body">
+    <div class="items-overlay"></div>
+    <h1 class="items-title">Items</h1>
+    <div class="items-container">
+      <div class="items-grid">
+        <mat-card *ngFor="let item of items" class="item-card">
+          <mat-card-header>
+            <h6 appTitleStyle>{{ item.name }}</h6>
+          </mat-card-header>
+          <img mat-card-image [src]="getItemImageUrl(item.image.full)" alt="{{ item.name }}">
+          <mat-card-content>
+            <p>{{ item.description | cleanText }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </section>
+}
 
