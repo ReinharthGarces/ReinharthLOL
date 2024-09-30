@@ -13,13 +13,18 @@
     <h1 class="items-title">Items</h1>
     <div class="items-container">
       <div class="items-grid">
-        <mat-card *ngFor="let item of items" class="item-card">
+        <mat-card *ngFor="let item of items | filterItems" class="item-card" [ngClass]="{'expanded': selectedItem === item}" (click)="toggleExpand(item)">
           <mat-card-header>
-            <h6 appTitleStyle>{{ item.name }}</h6>
+            <span appTitleStyle>{{ item.name }}</span>
           </mat-card-header>
-          <img mat-card-image [src]="getItemImageUrl(item.image.full)" alt="{{ item.name }}">
+            <img class="item-img" mat-card-image [src]="getItemImageUrl(item.image.full)" alt="{{ item.name }}">
           <mat-card-content>
-            <p>{{ item.description | cleanText }}</p>
+            <p class="cost">{{item.gold.total}}</p>
+            <img class="gold" src="/gold.png" width="30" height="30"/>
+            <!-- Información adicional -->
+            <div *ngIf="selectedItem === item" class="additional-info">
+              <p [innerHTML]="item.description | cleanItemsText"></p>
+            </div>
           </mat-card-content>
         </mat-card>
       </div>
@@ -27,3 +32,4 @@
   </section>
 }
 
+<!-- <p>{{ item.description | cleanText }}</p> -->

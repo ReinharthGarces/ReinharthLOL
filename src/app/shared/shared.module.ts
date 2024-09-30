@@ -23,6 +23,8 @@ import { TranslateTagPipe } from './pipes/translate-tag.pipe';
 import { AppTitleSizeDirective } from './directives/title-style.directive';
 import { CleanTextPipe } from './pipes/clean-text.pipe';
 import { FilterSpellsPipe } from './pipes/filter-spells.pipe';
+import { FilterItemsPipe } from './pipes/filter-items.pipe';
+import { CleanItemsTextPipe } from './pipes/clean-items-text.pipe';
 
 
 const materialComponents = [
@@ -54,14 +56,18 @@ const materialComponents = [
     materialComponents,
     TranslateTagPipe,
     CleanTextPipe,
+    CleanItemsTextPipe,
     FilterSpellsPipe,
+    FilterItemsPipe,
     AppTitleSizeDirective
   ],
   declarations: [
     TranslateTagPipe,
     AppTitleSizeDirective,
     CleanTextPipe,
-    FilterSpellsPipe
+    CleanItemsTextPipe,
+    FilterSpellsPipe,
+    FilterItemsPipe,
   ]
 })
 

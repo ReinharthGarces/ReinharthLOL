@@ -8,7 +8,11 @@ export class CleanTextPipe implements PipeTransform {
   transform(value: string): string {
     if (!value) return value;
 
-    // Remover etiquetas HTML
+    // Reemplazar etiquetas de salto de línea (<br>, <hr>) antes de eliminar otras etiquetas HTML
+    value = value.replace(/<br\s*\/?>/gi, '\n'); // Cambia <br> por un salto de línea
+    value = value.replace(/<hr\s*\/?>/gi, '\n'); // Cambia <hr> por un salto de línea
+
+    // Remover otras etiquetas HTML
     let clean = value.replace(/<\/?[^>]+(>|$)/g, "");
 
     // Eliminar secuencias como "<lol-uikit-tooltipped-keyword ...>" y "<trueDamage>"
@@ -16,10 +20,6 @@ export class CleanTextPipe implements PipeTransform {
     clean = clean.replace(/<\/lol-uikit-tooltipped-keyword>/g, "");
     clean = clean.replace(/<trueDamage>/g, "");
     clean = clean.replace(/<\/trueDamage>/g, "");
-
-    // Reemplazar etiquetas de salto de línea (<br>, <hr>)
-    clean = clean.replace(/<br\s*\/?>/gi, "\n");
-    clean = clean.replace(/<hr\s*\/?>/gi, "\n");
 
     // Eliminar espacios múltiples
     clean = clean.replace(/\s\s+/g, ' ');

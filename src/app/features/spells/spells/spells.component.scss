@@ -59,7 +59,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 35px;
+  gap: 40px;
   z-index: 2;
   margin-bottom: 8vh;
   justify-content: center;
@@ -75,6 +75,14 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  
+  img {
+    align-self: center;
+    box-shadow: $deeper-card;
+    border-radius: 10px;
+    width: 80%;
+    height: 250px;
+  }
 
   mat-card-header {
     background-color: $secondary-color;
@@ -120,7 +128,7 @@
   }
 
   .spell-card{
-    max-height: 50vh;
+    max-height: 55vh;
   }
 }
 

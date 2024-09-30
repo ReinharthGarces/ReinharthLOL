@@ -1,7 +1,6 @@
 @import "../../../scss/variables";
 
 .body {
-  position: relative;
   background-image: url('../../../assets/summoner-rift2.jpg');
   background-attachment: fixed;
   background-position: center;
@@ -9,11 +8,11 @@
   position: absolute;
   z-index: 1;
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
 
   .items-overlay {
     position: absolute;
-    width: 100vw;
+    width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
     z-index: -1;
@@ -21,27 +20,27 @@
 
   .items-title {
     text-align: center;
-    margin-block: 4%;
+    margin-block: 5%;
     color: $septenary-color;
     font-family: $title-font;
     font-weight: 800;
     font-size: 3.5rem;
     text-shadow: $deeper-text;
   }
-}
 
-//Spinner
-.spinner-container {
-  display: flex;
-  flex-direction: column;
-  gap: 4%;
-  justify-content: center;
-  align-items: center;
-  height: 40vh;
-  margin: 30vh;
+  //Spinner
+  .spinner-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4%;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    margin: 30vh;
 
-  h2 {
-    font-size: xx-large;
+    h2 {
+      font-size: xx-large;
+    }
   }
 }
 
@@ -51,22 +50,30 @@
   text-align: center;
   flex-direction: column;
   align-items: center;
-  margin: 5%;
 }
 
 // Grid de items
 .items-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(150px, 280px)); /* Cambiado a max 200px */
+  grid-template-columns: repeat(6, minmax(100px, 200px));
   gap: 30px;
   z-index: 2;
   margin-bottom: 8vh;
   justify-content: center;
   align-items: center;
+
+  .item-card.expanded {
+    ~ .item-card,
+    .item-card:not(.expanded) {
+      filter: blur(4px);
+      transition: filter 0.3s ease;
+    }
+  }
 }
 
+//Cards en Grid
 .item-card {
-  height: 450px;
+  height: 290px;
   transition: transform 0.3s ease, filter 0.3s ease;
   cursor: pointer;
   background-color: $primary-color;
@@ -86,9 +93,23 @@
   }
 
   mat-card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: $quinary-color;
     padding: 5%;
     overflow: auto;
+
+    .cost {
+      text-align: center;
+      font-weight: 500;
+      font-size: x-large;
+      padding-top: 5px;
+    }
+
+    .gold {
+      align-self: flex-start;
+    }
 
     &::-webkit-scrollbar {
       width: 6px;
@@ -107,24 +128,53 @@
     }
   }
 
-  img {
+  .item-img {
     align-self: center;
     box-shadow: $deeper-card;
     border-radius: 10px;
-    width: 70%;
-    height: 200px;
+    width: 80%;
+    height: 150px;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: $bento-card;
   }
 }
 
-.item-card:hover {
-  transform: scale(1.05);
-  box-shadow: $bento-card;
-}
+//Animacion expanded
+.item-card.expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%) scale(1.4);
+  transition: transform 0.3s ease;
+  z-index: 999;
+  width: 250px;
+  height: 450px;
+  background-color: $secondary-color;
+  box-shadow: $deeper-card-inset;
 
-// Efecto de blur cuando una card está siendo hovereada
-.items-grid:hover > .item-card:not(:hover) {
-  // filter: blur(4px);
-  transform: scale(0.90);
+  mat-card-header {
+    background-color: $primary-color;
+  }
+
+  .item-img {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+  }
+
+  .cost, .gold {
+    display: none;
+  }
+
+  .additional-info {
+    margin-top: 10px;
+    color: $quinary-color;
+    font-size: 12px;
+    line-height: 18px;
+    transition: opacity 0.3s ease;
+  }
 }
 
 // Media queries para la responsividad
@@ -168,5 +218,19 @@
 
   .items-container {
     margin: 5vh 15vw;
+  }
+
+  .item-card.expanded {
+    width: 200px;
+    height: 350px;
+  
+    .item-img {
+      transform:scale(0.95);
+    }
+    .additional-info {
+      margin-top: 8px;
+      font-size: x-small;
+      line-height: 14px;
+    }
   }
 }

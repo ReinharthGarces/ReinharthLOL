@@ -10,6 +10,7 @@ import { ItemsService } from '../../../core/items.service';
 export class ItemsComponent implements OnInit {
   public isLoading: boolean = true;
   items: any[] = [];
+  selectedItem: any = null;
   uniqueTags: Set<string> = new Set();
 
   constructor(private itemsService: ItemsService) {}
@@ -26,13 +27,20 @@ export class ItemsComponent implements OnInit {
           item.tags.forEach((tag: string) => this.uniqueTags.add(tag));
         }
       });
-
       // Convert Set to Array if needed
-      console.log([...this.uniqueTags]);
+      // console.log([...this.uniqueTags]);
     });
   }
 
   getItemImageUrl(imageName: string): string {
     return `${this.itemsService.getItemImageUrl(imageName)}`;
+  }
+
+  toggleExpand(item: any) {
+    if (this.selectedItem === item) {
+      this.selectedItem = null;  // Si hace clic en la misma, la cierra
+    } else {
+      this.selectedItem = item;  // Si hace clic en otra, la abre
+    }
   }
 }
